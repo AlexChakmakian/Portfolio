@@ -1,0 +1,357 @@
+:root {
+  --accent-color: #67a1ff;
+  --back-color: #181a1b;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: white;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 1rem;
+  line-height: 1.25;
+  padding: 0;
+}
+
+#particles-js {
+  position: absolute;
+  height: 45vh;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+#amazon{
+  color: #fca21b;
+}
+
+/* MOBILE VIEW */
+
+.myDescription {
+  margin: 0;
+  width: 80%;
+  line-height: 2;
+  font-size: clamp(0.5rem, 3vw, 2rem);
+}
+
+.topArrow {
+  position: fixed;
+  right: 3rem;
+  bottom: 3rem;
+  background-color: var(--accent-color);
+  border-radius: 1rem;
+  width: 5rem;
+  height: 5rem;
+  z-index: 2;
+}
+
+.topArrow .iconify {
+  font-size: 5rem;
+}
+
+li .fa-brands {
+  font-size: 2rem;
+}
+
+li .fa-solid {
+  font-size: 2rem;
+}
+
+button .iconify {
+  font-size: 2rem;
+}
+
+span {
+  color: var(--accent-color);
+}
+
+.topBack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 45vh;
+  text-align: center;
+  background-color: var(--back-color);
+  color: white;
+}
+
+.myname {
+  font-size: clamp(5vw, 6rem);
+  font-family: "Alfa Slab One";
+  font-weight: 100;
+  margin: 0;
+  margin-bottom: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+nav { 
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 1.0rem 0; /* Increase padding for better spacing */
+  background-color: #1f2124;
+  font-size: 1.5rem; /* Reduce font size */
+}
+
+ul {
+  list-style-type: none;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: inline;
+  padding-left: 0.7rem; /* Reduce padding */
+  padding-right: 0.5rem; /* Reduce padding */
+}
+
+.myLinks {
+  display: inline-block;
+  position: relative;
+  padding: 0 0 0.5rem 0;
+  font-size: 1.75rem; /* Reduce font size */
+}
+
+.myLinks .iconify {
+  font-size: 1.75rem; /* Adjust icon size */
+  margin-right: 0.3rem; /* Adjust margin */
+}
+
+.myLinks:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent-color);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.myLinks:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.hrLine {
+  margin: auto;
+  margin-top: 2rem;
+  width: 80%;
+  height: 0.2rem;
+  background-color: #0d1117;
+}
+.iconText {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  color: white;
+}
+
+.contactMe {
+  color: black;
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.contactMe h2 {
+  margin-bottom: 3rem;
+}
+
+.contactCards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.accentColor {
+  color: var(--accent-color);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 25rem;
+  box-shadow: 0px 0px 10px 1px #e3e3e3;
+  border-radius: 0.25rem;
+  margin-bottom: 2rem;
+  height: 15rem;
+  padding: 3rem 0 3rem 0;
+}
+
+.card p {
+  font-size: 1.4rem;
+}
+
+.card .iconify {
+  color: var(--accent-color);
+  font-size: 5.5rem;
+  padding-bottom: 1rem;
+}
+
+.card li {
+  transition: all 0.2s;
+}
+
+.card li:hover {
+  transform: translateY(-1rem);
+}
+
+.contactMe a {
+  color: var(--accent-color);
+}
+
+form {
+  padding: 1rem 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  width: 90%;
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+  box-shadow: 0px 0px 10px 1px #e3e3e3;
+  border-radius: 0.25rem;
+  font-size: 2rem;
+}
+
+form input {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  width: 80%;
+}
+
+form textarea {
+  height: 15rem;
+  margin-bottom: 1rem;
+  width: 80%;
+  padding: 1rem;
+  resize: none;
+}
+
+button {
+  cursor: pointer;
+  font-size: 2rem;
+  color: #c9d1d9;
+  border: 0.25rem var(--accent-color) solid;
+  border-radius: 0.25rem;
+  padding: 1rem;
+}
+
+button {
+  transition: all ease-in-out 0.35s;
+}
+
+footer {
+  color: #21262d;
+}
+
+.footerLinks {
+  height: 10vh;
+  background-color: #21262d;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.footerLinks > a {
+  padding: 2rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.footerLinks > a:hover {
+  transform: scale(1.2);
+  color: dodgerblue;
+}
+
+.footerLinks .iconify {
+  font-size: 3rem;
+}
+
+/* LAPTOP VIEW */
+
+@media screen and (min-width: 1025px) {
+  body {
+    font-size: 2.4rem;
+  }
+  .myDescription {
+    width: 40%;
+    margin: 0;
+  }
+  nav {
+    font-size: 2rem;
+  }
+  h1 {
+    font-size: 6rem;
+  }
+  h2 {
+    font-size: 3.5rem;
+  }
+  .myLinks {
+    padding: 0 2rem 0.5rem 2rem;
+  }
+  h3 {
+    font-size: 2.5rem;
+  }
+  p {
+    font-size: 2rem;
+  }
+  .contactMe {
+    width: 60%;
+    margin: auto;
+    margin-bottom: 4rem;
+  }
+  .contactCards {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .contactCards h3 {
+    font-size: 1.75rem;
+  }
+  .contactCards p {
+    font-size: 1.5rem;
+  }
+  .iconifySkills {
+    font-size: 8rem;
+  }
+
+  .portfolioTitle {
+    font-family: 'Alfa Slab One', cursive; /* Ensure the correct font is applied */
+    font-size: 2.5rem; /* Adjust the font size as needed */
+    font-weight: 400; /* Adjust the font weight */
+    color: rgb(0, 0, 0); /* Adjust the color as needed */
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .portfolioTitle span {
+    color: var(--accent-color); /* Ensure the accent color is applied */
+  }
+
+  .iconText {
+    font-size: 1.5rem;
+  }
+  .codeButton {
+    margin-bottom: 2rem;
+  }
+  button {
+    padding: 1rem 2rem 1rem 2rem;
+  }
+  form {
+    width: 35%;
+  }
+}
+
+/* LARGE DESKTOP VIEW */
+@media screen and (min-width: 1600px) {
+}

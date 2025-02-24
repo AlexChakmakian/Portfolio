@@ -1,0 +1,147 @@
+/* MOBILE VIEW */
+
+.education {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  color: black;
+}
+
+.educationCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  box-shadow: 0px 0px 10px 1px #e3e3e3;
+  padding: 3rem 3rem 3rem 3rem;
+  margin: 3rem 0 5rem 0;
+}
+
+.educationInfo {
+  text-align: left;
+  margin-top: 0;
+  width: 95%;
+  list-style-type: disc;
+}
+
+.accomplishmentTitle{
+  font-weight: 700;
+}
+
+.accomplishmentTagline{
+  font-style: italic;
+}
+
+.educationInfo p {
+  line-height: 1.25;
+}
+
+.educationInfo li {
+  display: list-item;
+  font-size: 1.5rem;
+  list-style-position: outside;
+  margin-left: 2rem;
+  line-height: 3rem;
+}
+
+.schoolPic {
+  width: 10rem;
+  margin: auto;
+}
+
+#gradCap {
+  width: 27%;
+}
+#compPhone {
+  width: 27%;
+}
+
+/* LAPTOP VIEW */
+
+@media screen and (min-width: 1025px) {
+  #experienceCard {
+    flex-direction: row;
+    width: 60%;
+    padding-right: 5rem;
+  }
+  .educationCard {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0px 0px 10px 1px #e3e3e3;
+    padding: 3rem;
+    margin: 3rem 0 5rem 0;
+  }
+  
+  .educationInfo {
+    text-align: left;
+    margin-top: 0;
+    width: 95%;
+    list-style-type: disc;
+    margin-left: 2rem; /* Add margin to move text to the right */
+  }
+  #pennymac-image {
+    width: clamp(20rem, 3vw, 25rem);
+    height: auto;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  #csun-exp-img {
+    width: clamp(10rem, 3vw, 15rem);
+    height: auto;
+    margin-left: 6rem;
+    margin-right: 6rem;
+  }
+  .educationInfo {
+    width: 100%;
+  }
+  .education {
+    width: 50%;
+  }
+  .educationInfo p {
+    line-height: 1.25;
+  }
+  .educationInfo li {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .schoolPic {
+    width: 15rem;
+    margin: auto;
+  }
+  .arcspic {
+    width: 200px; /* Adjust the width as needed */
+    height: auto;
+    margin: auto;
+  }
+}
+
+/* LARGE DESKTOP VIEW */
+@media screen and (min-width: 1600px) {
+  .educationCard {
+    display: flex;
+    flex-direction: row;
+  }
+  #gradCap,
+  #compPhone,
+  .schoolPic {
+    margin-right: 3rem;
+    margin-left: 3rem;
+  }
+  #pennymac-image {
+    width: clamp(20rem, 3vw, 25rem);
+    height: auto;
+    margin: auto;
+    margin: 4rem;
+  }
+
+  #csun-exp-img {
+    width: clamp(10rem, 3vw, 15rem);
+    height: auto;
+    margin-left: 9rem;
+    margin-right: 9rem;
+  }
+
+  #experienceCard {
+    width: 60%;
+  }
+}

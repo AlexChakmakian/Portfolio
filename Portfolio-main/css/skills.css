@@ -1,0 +1,64 @@
+/* MOBILE VIEW */
+
+.skillsSection {
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: var(--back-color);
+  margin-bottom: 2rem;
+  clip-path: polygon(100% 0%, 0% 3%, 0% 100%, 100% 97%);
+}
+
+.mySkillsHeading {
+  margin-top: 10vh;
+}
+
+.skillsIcons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-self: center;
+  margin: 0;
+  max-width: 70rem;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 10rem 0 10rem 0;
+}
+
+.skillsIcons li {
+  display: flex;
+  flex-direction: column;
+  width: 8rem;
+  margin-bottom: 4rem;
+  padding: 2rem;
+  transition: 0.3s;
+}
+
+.iconifySkills {
+  font-size: 6rem;
+  margin: auto;
+}
+
+.iconText {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  color: white;
+}
+
+/* LAPTOP VIEW */
+
+@media screen and (min-width: 1025px) {
+  .skillsSection {
+    clip-path: polygon(100% 0%, 0% 10%, 0% 100%, 100% 90%);
+  }
+  .skillsIcons li {
+    padding: 3rem;
+  }
+  .skillsIcons li:hover {
+    transform: scale(1.35);
+  }
+  .iconifySkills {
+    font-size: 8rem;
+    margin: auto;
+  }
+}
