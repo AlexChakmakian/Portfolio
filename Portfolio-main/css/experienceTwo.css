@@ -11,44 +11,42 @@
 }
 
 .experienceTwo .mySkillsHeading {
-  margin-top: 10vh;
+  margin-top: 8vh; /* reduce for heading space */
+  margin-bottom: 0; /* Ensure no bottom margin */
 }
 
 .experienceTwo .skillsIcons {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-self: center;
-  margin: 0;
-  max-width: 70rem;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 10rem 0 10rem 0;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 0 5rem 0; /* Reduced top padding from 5rem to 2rem */
 }
 
 .experienceTwo .skillsIcons li {
   display: flex;
   flex-direction: column;
-  width: 8rem;
-  margin-bottom: 4rem;
-  padding: 2rem;
-  transition: 0.3s;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  text-align: center;
 }
 
 .experienceTwo .iconifySkills {
-  font-size: 6rem;
-  margin: auto;
-}
-
-.experienceTwo .iconifySkills {
-  width: 50px; /* Adjust the width as needed */
-  height: auto; /* Maintain aspect ratio */
-  margin: auto;
+  display: block;
+  width: 100px;
+  height: auto;
+  margin: 0 auto 1rem auto;
 }
 
 .experienceTwo .iconText {
+  display: block;
   font-size: 1.5rem;
-  margin-top: 1rem;
   color: white;
+  text-align: center;
+  width: 100%;
 }
 
 /* LAPTOP VIEW */
@@ -57,14 +55,16 @@
   .experienceTwo {
     clip-path: polygon(100% 0%, 0% 10%, 0% 100%, 100% 90%);
   }
+  .experienceTwo .skillsIcons {
+    padding: 2rem 0 8rem 0; /* Reduced top padding from 8rem to 2rem */
+  }
   .experienceTwo .skillsIcons li {
-    padding: 3rem;
+    width: 200px;
   }
   .experienceTwo .skillsIcons li:hover {
     transform: scale(1.35);
   }
   .experienceTwo .iconifySkills {
-    font-size: 8rem;
-    margin: auto;
+    width: 120px;
   }
 }
