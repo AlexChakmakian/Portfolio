@@ -1,7 +1,7 @@
 /* MOBILE VIEW */
 
 .experienceTwo {
-  padding-top: 3rem;
+  padding-top: 1rem;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -36,6 +36,12 @@
 
 .experienceTwo .iconifySkills {
   font-size: 6rem;
+  margin: auto;
+}
+
+.experienceTwo .iconifySkills {
+  width: 50px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
   margin: auto;
 }
 

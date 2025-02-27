@@ -51,6 +51,14 @@
   background-color: white;
   color: var(--accent-color);
 }
+
+.figmaButton {
+  margin-top: 2rem;
+  background-color: white;
+  color: var(--accent-color);
+  margin-left: 1rem; /* Add some space between the buttons */
+}
+
 .demoButton,
 .codeButton:hover {
   background-color: var(--accent-color);
