@@ -142,7 +142,7 @@
               </button>
             </a>
           </div>
-          <video class="videoplayers" autoplay loop muted aria-label="Smart Pantry Demo Video">
+          <video class="videoplayers" autoplay loop muted playsinline aria-label="Smart Pantry Demo Video">
             <source src="videos/sp_footage.mov" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -170,7 +170,7 @@
               </button>
             </a>
           </div>
-          <video class="videoplayers" autoplay loop muted aria-label="Ocean Explorer App Demo Video">
+          <video class="videoplayers" autoplay loop muted playsinline aria-label="Ocean Explorer App Demo Video">
             <source src="videos/OE_footage.mov" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -197,7 +197,7 @@
               </button>
             </a>
           </div>
-          <video class="videoplayers" autoplay loop muted aria-label="Phantom Inn Booking Software Demo Video">
+          <video class="videoplayers" autoplay loop muted playsinline aria-label="Phantom Inn Booking Software Demo Video">
             <source src="videos/booking_footage.mov" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -429,19 +429,20 @@
       -->
       <p class="copyright" style="color: rgb(158, 158, 158); font-size: 1.5rem;">© 2025 Alexander Chakmakian</p>
       
-    <!-- BACK TO TOP ARROW -->
-    <a href="#" class="topArrow" aria-label="Back to top">
-      <span class="iconify iconifySkills" data-icon="bx:up-arrow-alt"></span>
-    </a>
+<!-- BACK TO TOP ARROW -->
+<a href="#" class="topArrow" aria-label="Back to top">
+  <span class="iconify" data-icon="bx:up-arrow-alt"></span>
+</a>
 
-    <script src="./aos-master/dist/aos.js"></script>
-    <script>
-      AOS.init();
-    </script>
-    <script src="scripts/particles.js"></script>
-    <script src="scripts/app.js"></script>
-    <script>
-      document.getElementsByClassName('videoplayers').play();
-    </script>
+<script src="./aos-master/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+<script src="scripts/particles.js"></script>
+<script src="scripts/app.js"></script>
+<script>
+  document.getElementsByClassName('videoplayers').play();
+</script>
+    
   </body>
 </html>

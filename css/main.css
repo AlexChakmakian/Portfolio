@@ -42,15 +42,23 @@ body {
   position: fixed;
   right: 3rem;
   bottom: 3rem;
-  background-color: var(--accent-color);
-  border-radius: 1rem;
-  width: 5rem;
-  height: 5rem;
-  z-index: 2;
+  background-color: rgb(77, 135, 230, 0.85); /* Making the background semi-transparent */
+  border-radius: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  z-index: 999; /* Higher z-index */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: visible !important; /* Add !important */
 }
 
 .topArrow .iconify {
-  font-size: 5rem;
+  font-size: 2rem !important; /* Base size */
+  color: #fff;
+  transform-origin: center;
+  transform: scale(3.5) !important; /* Add !important */
 }
 
 li .fa-brands {
