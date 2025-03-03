@@ -4,7 +4,27 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Alexander Chakmakian (Alex Jacob) - Computer Science Student at CSUN and Tech Intern at LA Tech. Portfolio showcasing projects in React, Java, Python, Swift, and AI solutions.">
+    <meta name="keywords" content="Alexander Chakmakian, Alex Jacob, Alex Chakmakian, Computer Science, CSUN, Software Developer, React, Java, Python, Swift, Portfolio">
+    <meta name="author" content="Alexander Chakmakian">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Alexander Chakmakian (Alex Jacob) | Software Developer Portfolio">
+    <meta property="og:description" content="Computer Science Student at CSUN and Tech Intern at LA Tech. View my projects in React, Java, Python, Swift, and AI solutions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alexjacob.dev">
+    <meta property="og:image" content="images/profile.jpg">
+    
     <title>Alex Jacob Chakmakian</title>
+    <link rel="canonical" href="https://alexanderchakmakian.com">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="videos/sp_footage.mov" as="video" type="video/mp4">
+    <link rel="preload" href="css/main.css" as="style">
+    <link rel="preload" href="./aos-master/dist/aos.js" as="script">
+    
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
     <link rel="stylesheet" href="./aos-master/dist/aos.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,15 +41,44 @@
     <link rel="stylesheet" href="css/skills.css" />
     <link rel="stylesheet" href="css/experienceTwo.css" />
     <link rel="icon" href="favicon.png"/>
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Alexander Chakmakian",
+      "alternateName": "Alex Jacob",
+      "url": "https://alexanderchakmakian.com",
+      "image": "images/profile.jpg",
+      "jobTitle": "Tech Intern",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "LA Tech"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "California State University Northridge"
+      },
+      "knowsAbout": ["React.js", "Java", "Python", "Swift", "Node.js", "TypeScript", "Firebase"],
+      "sameAs": [
+        "https://www.linkedin.com/in/alexanderchakmakian/",
+        "https://github.com/alexchakmakian"
+      ],
+      "email": "alexchakmakian@gmail.com"
+    }
+    </script>
   </head>
   <body>
-    <nav>
+    <nav id="main-navigation" role="navigation" aria-label="Main Navigation">
       <ul>
         <li>
           <a
             class="myLinks"
             href="https://www.linkedin.com/in/alexanderchakmakian/"
             target="_blank"
+            rel="noopener"
+            aria-label="LinkedIn Profile"
           >
           <span class="iconify" data-icon="akar-icons:linkedin-box-fill"></span>
             LinkedIn
@@ -40,6 +89,8 @@
             class="myLinks"
             href="https://github.com/alexchakmakian"
             target="_blank"
+            rel="noopener"
+            aria-label="GitHub Profile"
           >
           <span class="iconify" data-icon="akar-icons:github-fill"></span>
             GitHub</a
@@ -47,7 +98,7 @@
         </li>
         <li>
         <!--
-          <a class="myLinks" href="alexresume.pdf" target="_blank">
+          <a class="myLinks" href="alexresume.pdf" target="_blank" rel="noopener" aria-label="Resume">
             <span class="iconify" data-icon="akar-icons:paper"></span>
             Resume</a
           >
@@ -55,8 +106,8 @@
         -->
       </ul>
     </nav>
-    <div id="particles-js"></div>
-    <div class="topBack">
+    <div id="particles-js" aria-hidden="true"></div>
+    <header class="topBack">
       <h1 class="myname" data-aos="fade-up">
         Hey, I'm <span>Alexander</span>
       </h1>
@@ -64,312 +115,322 @@
         I'm a Computer Science Student at CSUN working as a tech intern at <span id="job">LA Tech</span>.
         See my personal and team-based programming projects down below!
       </p>
-    </div>
+    </header>
 
-    <div class="Projects">
-      <h2 class="portfolioTitle" data-aos="fade-up">
-        My <span>Projects</span>
-      </h2>
-      <div class="project" data-aos="fade-up">
-        <div class="projectDetails">
-          <h3>Smart Pantry🍏</h3>
-          <p class="toolsUsed">React.js, Node.js, Typescript, Firebase(NoSQL), Spoonacular</p>
-          <p>
-            Stuck on what to eat? Let AI turn your pantry into tasty
-            meal ideas with real-time recipe suggestions, based on what's in your pantry!
-          </p>
-          <a
-            href="https://github.com/AlexChakmakian/SmartPantry/tree/master"
-            target="_blank"
-          >
-            <button class="codeButton">
-              <span class="iconify iconifySkills" data-icon="akar-icons:github-fill"></span>
-              Code
-            </button>
-          </a>
-        </div>
-        <video class="videoplayers" autoplay loop muted>
-          <source src="videos/sp_footage.mov" type="video/mp4" />
-        </video>
-      </div>
-    
-      <div class="project" data-aos="fade-up">
-        <div class="projectDetails">
-          <h3>Ocean Explorer App🌎</h3>
-          <p class="toolsUsed">Swift, Figma, SpriteKit</p>
-          <p>
-            Created a crossy-road style game where players navigate through obstacles
-            using Swift and SpriteKit. Designed the user interface and experience in
-            Figma from the ground up.
-          </p>
-          <a href="https://github.com/hyungwlee/Ocean-Explorer" target="_blank">
-            <button class="codeButton">
-              <span class="iconify iconifySkills" data-icon="akar-icons:github-fill"></span>
-              Code
-            </button>
-          </a>
-          <a href="https://www.figma.com/design/mFZGx9AijcKbp2phlJMDX2/Ocean-Explorers?node-id=0-1&t=4zWL7mIXysjSGfg3-1" target="_blank">
-            <button class="figmaButton">
-              <span class="iconify iconifySkills" data-icon="logos:figma"></span>
-              Figma
-            </button>
-          </a>
-        </div>
-        <video class="videoplayers" autoplay loop muted>
-          <source src="videos/OE_footage.mov" type="video/mp4" />
-        </video>
-      </div>
-      <div class="project" data-aos="fade-up">
-        <div class="projectDetails">
-          <h3>Phantom Inn Booking Software📅</h3>
-          <p class="toolsUsed">Java, Scene Builder, Apache POI, MySQL </p>
-          <p>
-            Developed a scalable booking system capable of handling up to 65,000 users. 
-            Featuring booking confirmations with real-time email notifications for bookings,
-            cancellations and receipt.
-
-          </p>
-          <a
-            href="https://github.com/aidanfoxcsun/380-Hotel"
-            target="_blank"
-          >
-            <button class="codeButton">
-              <span class="iconify iconifySkills" data-icon="akar-icons:github-fill"></span>
-              Code
-            </button>
-          </a>
-        </div>
-        <video class="videoplayers" autoplay loop muted>
-          <source src="videos/booking_footage.mov" type="video/mp4" />
-        </video>
-      </div>
-      <div class="project" data-aos="fade-up">
-        <div class="projectDetails">
-          <h3>Football AI (Object Detection) Analysis🧠</h3>
-          <p class="toolsUsed">Python, Pytorch, OpenCV, YOLO, TensorFlow</p>          
-          <p>
-            Created a Football AI system using Python and Pytorch that uses object
-            detection to detect and track players, referees, and the ball in real-time,
-            offering insights into game dynamics and player performance.
-          </p>
-          <a
-            href="https://github.com/AlexChakmakian/GameVisionAI"
-            target="_blank"
-          >
-            <button class="codeButton">
-              <span class="iconify iconifySkills" data-icon="akar-icons:github-fill"></span>
-              Code
-            </button>
-            <a href=" INSERT BUTTON HERE " target="_blank">
-            <!--  <button class="demoButton">Demo</button>
-            -->
+    <main>
+      <section class="Projects" id="projects">
+        <h2 class="portfolioTitle" data-aos="fade-up">
+          My <span>Projects</span>
+        </h2>
+        <article class="project" data-aos="fade-up">
+          <div class="projectDetails">
+            <h3>Smart Pantry🍏</h3>
+            <p class="toolsUsed">React.js, Node.js, Typescript, Firebase(NoSQL), Spoonacular</p>
+            <p>
+              Stuck on what to eat? Let AI turn your pantry into tasty
+              meal ideas with real-time recipe suggestions, based on what's in your pantry!
+            </p>
+            <a
+              href="https://github.com/AlexChakmakian/SmartPantry/tree/master"
+              target="_blank"
+              rel="noopener"
+              aria-label="Smart Pantry GitHub Repository"
+            >
+              <button class="codeButton">
+                <span class="iconify iconifySkills" data-icon="akar-icons:github-fill"></span>
+                Code
+              </button>
             </a>
+          </div>
+          <video class="videoplayers" autoplay loop muted aria-label="Smart Pantry Demo Video">
+            <source src="videos/sp_footage.mov" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </article>
+      
+        <article class="project" data-aos="fade-up">
+          <div class="projectDetails">
+            <h3>Ocean Explorer App🌎</h3>
+            <p class="toolsUsed">Swift, Figma, SpriteKit</p>
+            <p>
+              Created a crossy-road style game where players navigate through obstacles
+              using Swift and SpriteKit. Designed the user interface and experience in
+              Figma from the ground up.
+            </p>
+            <a href="https://github.com/hyungwlee/Ocean-Explorer" target="_blank" rel="noopener" aria-label="Ocean Explorer GitHub Repository">
+              <button class="codeButton">
+                <span class="iconify iconifySkills" data-icon="akar-icons:github-fill"></span>
+                Code
+              </button>
+            </a>
+            <a href="https://www.figma.com/design/mFZGx9AijcKbp2phlJMDX2/Ocean-Explorers?node-id=0-1&t=4zWL7mIXysjSGfg3-1" target="_blank" rel="noopener" aria-label="Ocean Explorer Figma Design">
+              <button class="figmaButton">
+                <span class="iconify iconifySkills" data-icon="logos:figma"></span>
+                Figma
+              </button>
+            </a>
+          </div>
+          <video class="videoplayers" autoplay loop muted aria-label="Ocean Explorer App Demo Video">
+            <source src="videos/OE_footage.mov" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </article>
+        
+        <article class="project" data-aos="fade-up">
+          <div class="projectDetails">
+            <h3>Phantom Inn Booking Software📅</h3>
+            <p class="toolsUsed">Java, Scene Builder, Apache POI, MySQL</p>
+            <p>
+              Developed a scalable booking system capable of handling up to 65,000 users. 
+              Featuring booking confirmations with real-time email notifications for bookings,
+              cancellations and receipt.
+            </p>
+            <a
+              href="https://github.com/aidanfoxcsun/380-Hotel"
+              target="_blank"
+              rel="noopener"
+              aria-label="Phantom Inn Booking Software GitHub Repository"
+            >
+              <button class="codeButton">
+                <span class="iconify iconifySkills" data-icon="akar-icons:github-fill"></span>
+                Code
+              </button>
+            </a>
+          </div>
+          <video class="videoplayers" autoplay loop muted aria-label="Phantom Inn Booking Software Demo Video">
+            <source src="videos/booking_footage.mov" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </article>
+        
+        <article class="project" data-aos="fade-up">
+          <div class="projectDetails">
+            <h3>Football AI (Object Detection) Analysis🧠</h3>
+            <p class="toolsUsed">Python, Pytorch, OpenCV, YOLO, TensorFlow</p>          
+            <p>
+              Created a Football AI system using Python and Pytorch that uses object
+              detection to detect and track players, referees, and the ball in real-time,
+              offering insights into game dynamics and player performance.
+            </p>
+            <a
+              href="https://github.com/AlexChakmakian/GameVisionAI"
+              target="_blank"
+              rel="noopener"
+              aria-label="Football AI GitHub Repository"
+            >
+              <button class="codeButton">
+                <span class="iconify iconifySkills" data-icon="akar-icons:github-fill"></span>
+                Code
+              </button>
+              <a href=" INSERT BUTTON HERE " target="_blank" rel="noopener">
+              <!--  <button class="demoButton">Demo</button>
+              -->
+              </a>
+            </a>
+          </div>
+          <div class="image_box">
+            <img class="project_image" src="images/soccer_ai.jpg" alt="Football AI Analysis showing object detection of players and ball on a soccer field">
+          </div>
+        </article>
+      </section>
+
+      <!-- EXPERIENCE SECTION -->
+      <section class="experienceTwo" id="experience">
+        <h2 class="mySkillsHeading" data-aos="fade-in">My <span>Experience</span></h2>
+        <ul class="skillsIcons" data-aos="fade-up">
+          <li>
+          <!--   <a href="https://www.latech.edu/" target="_blank" rel="noopener" class="experience-link"> -->
+              <img class="iconifySkills" src="images/latech_logo.png" alt="LA Tech Logo" />
+              <span class="iconText">LA Tech</span>
+            </a>
+          </li>
+          <li>
+          <!--   <a href="https://www.amazon.com/" target="_blank" rel="noopener" class="experience-link">  -->
+              <span class="iconify iconifySkills" data-icon="lineicons:amazon"></span>
+              <span class="iconText">Amazon</span>
+            </a>
+          </li>
+          <li>
+              <!--    <a href="https://www.yourfoclink.com/" target="_blank" rel="noopener" class="experience-link">  -->
+              <img class="iconifySkills" src="images/FOC_logo.png" alt="FOC Logo" />
+              <span class="iconText">FOC</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ACTIVITIES SECTION -->
+      <section class="education" id="activities">
+        <h2 data-aos="fade-in">My <span>Activities</span></h2>
+        <div class="educationCard" data-aos="fade-up">
+          <img class="arcspic centered-logo" src="images/arcs_logo.png" alt="NASA ARCS Logo">
+
+          <ul class="educationInfo">
+            <p class="accomplishmentTitle">NASA ARCS @ CSUN🚀</p>
+            <p class="accomplishmentTagline">Associate</p>
+            <li>Set up and worked with virtual machines to run ROS 2 for autonomous robotics research</li>
+            <li>Contributed to the CoHORT project, inspired by NASA JPL's CADRE rover system, focusing on multi-robot teaming and autonomous exploration</li>
+          </ul>
+          <a href="https://arcs.center/cohort-cooperative-human-operations-with-robot-teams/" target="_blank" rel="noopener" aria-label="NASA ARCS Project Page">
+            <button class="codeButton">
+              View Project
+            </button>
           </a>
         </div>
-        <div class="image_box">
-          <img class="project_image" src="images/soccer_ai.jpg" alt="Football AI Analysis">
+
+        <div class="educationCard" data-aos="fade-up">
+          <img class="arcspic centered-logo" src="images/codepath.png" alt="CodePath Logo">
+          <ul class="educationInfo">
+            <p class="accomplishmentTitle">CodePath x SHEIN Technical Prep💻</p>
+            <p class="accomplishmentTagline">Student</p>
+            <li>Completed advanced technical coding course from CodePath</li>
+            <li>Worked with mentors and engineers from SHEIN</li>
+          </ul>
+          <a href="https://www.codepath.org/" target="_blank" rel="noopener" aria-label="CodePath Organization Website">
+            <button class="codeButton">
+              View
+            </button>
+          </a>
         </div>
-      </div>
-    </div>
+      </section>
 
-<!-- EXPERIENCETWO SECTION -->
-<div class="experienceTwo">
-  <h2 class="mySkillsHeading" data-aos="fade-in">My <span>Experience</span></h2>
-  <ul class="skillsIcons" data-aos="fade-up">
-    <li>
-    <!--   <a href="https://www.latech.edu/" target="_blank" class="experience-link"> -->
-        <img class="iconifySkills" src="images/latech_logo.png" alt="LA Tech Logo" />
-        <span class="iconText">LA Tech</span>
-      </a>
-    </li>
-    <li>
-    <!--   <a href="https://www.amazon.com/" target="_blank" class="experience-link">  -->
-        <span class="iconify iconifySkills" data-icon="lineicons:amazon"></span>
-        <span class="iconText">Amazon</span>
-      </a>
-    </li>
-    <li>
-        <!--    <a href="https://www.yourfoclink.com/" target="_blank" class="experience-link">  -->
-        <img class="iconifySkills" src="images/FOC_logo.png" alt="FOC Logo" />
-        <span class="iconText">FOC</span>
-      </a>
-    </li>
-  </ul>
-</div>
+      <!-- EDUCATION SECTION -->
+      <section class="education" id="education">
+        <h2 data-aos="fade-in">My <span>Education</span></h2>
+        <div class="educationCard" data-aos="fade-up">
+          <img class="schoolPic" src="images/CSUNLogo.png" alt="California State University, Northridge Logo" style="width: 120px; height: auto;">
+          <ul class="educationInfo">
+            <p>California State University Northridge</p>
+            <p>GPA: 3.75 / 4.00</p>
+            <li>Bachelor of Computer Science</li>
+            <li>Honors & Dean's List</li>
+          </ul>
+        </div>
+      </section>
 
- <!-- Activities -->
- <div class="education">
-  <h2 data-aos="fade-in">My <span>Activities</span></h2>
-  <div class="educationCard" data-aos="fade-up">
-    <img class="arcspic centered-logo" src="images/arcs_logo.png" alt="ARCS_Logo">
+      <!-- SKILLS SECTION -->
+      <section class="skillsSection" id="skills">
+        <h2 class="mySkillsHeading" data-aos="fade-in">My <span>Skills</span></h2>
+        
+        <ul class="skillsIcons" data-aos="fade-up">
+          <li>
+            <span class="iconify iconifySkills" data-icon="logos:java"></span>
+            <span class="iconText">Java</span>
+          </li>
+          <li>
+            <span class="iconify iconifySkills" data-icon="vscode-icons:file-type-python"></span>
+            <span class="iconText">Python</span>
+          </li>
+          <li>
+            <span class="iconify iconifySkills" data-icon="logos:react"></span>
+            <span class="iconText">React</span>
+          </li>
+          <li>
+            <span class="iconify iconifySkills" data-icon="logos:nodejs-icon"></span>
+            <span class="iconText">Node.js</span>
+          </li>
+          <li>
+            <span class="iconify iconifySkills" data-icon="devicon:javascript"></span>
+            <span class="iconText">JavaScript</span>
+          </li>
+          <li>
+            <span class="iconify iconifySkills" data-icon="vscode-icons:file-type-typescript-official"></span>
+            <span class="iconText">TypeScript</span>
+          </li>
+          <li>
+            <span class="iconify iconifySkills" data-icon="vscode-icons:file-type-firebase"></span>
+            <span class="iconText">Firebase</span>
+          </li>
+          <li>
+            <span class="iconify iconifySkills" data-icon="line-md:github-loop"></span>
+            <span class="iconText">GitHub</span>
+          </li>
+          <li>
+            <span class="iconify iconifySkills" data-icon="vscode-icons:file-type-swift"></span>
+            <span class="iconText">Swift</span>
+          </li>
+          <li>
+            <span class="iconify iconifySkills" data-icon="logos:pytorch-icon"></span>
+            <span class="iconText">PyTorch</span>
+          </li>
+          <li>
+            <span class="iconify iconifySkills" data-icon="logos:jira"></span>
+            <span class="iconText">Jira</span>
+          </li>
+          <li>
+            <span class="iconify iconifySkills" data-icon="logos:figma"></span>
+            <span class="iconText">Figma</span>
+          </li>
+          <li>
+            <span class="iconify iconifySkills" data-icon="logos:adobe-photoshop"></span>
+            <span class="iconText">Photoshop</span>
+          </li>
+          <li>
+            <span class="iconify iconifySkills" data-icon="vscode-icons:file-type-html"></span>
+            <span class="iconText">HTML</span>
+          </li>
+          <li>
+            <span class="iconify iconifySkills" data-icon="vscode-icons:file-type-css"></span>
+            <span class="iconText">CSS</span>
+          </li>
+        </ul>
+      </section>
 
-    <ul class="educationInfo">
-      <p class="accomplishmentTitle">NASA ARCS @ CSUN🚀</p>
-      <p class="accomplishmentTagline"> Associate</p>
-      <li>Set up and worked with virtual machines to run ROS 2 for autonomous robotics research</li>
-      <li>Contributed to the CoHORT project, inspired by NASA JPL’s CADRE rover system, focusing on multi-robot teaming and autonomous exploration</li>
-    </ul>
-    <a href="https://arcs.center/cohort-cooperative-human-operations-with-robot-teams/" target="_blank">
-      <button class="codeButton">
-        View Project
-      </button>
-    </a>
-  </div>
-
-  <div class="educationCard" data-aos="fade-up">
-    <img class="arcspic centered-logo" src="images/codepath.png" alt="ARCS_Logo">
-    <ul class="educationInfo">
-      <p class="accomplishmentTitle">CodePath x SHEIN Technical Prep💻</p>
-      <p class="accomplishmentTagline">Student</p>
-      <li>Completed advanced technical coding course from CodePath</li>
-      <li>Worked with mentors and engineers from SHEIN</li>
-    </ul>
-    <a href="https://www.codepath.org/" target="_blank">
-      <button class="codeButton">
-        View
-      </button>
-    </a>
-      </a>
-    </ul>
-  </div>
-</div>
-        <!-- EDUCATION SECTION -->
-        <div class="education">
-          <h2 data-aos="fade-in">My <span>Education</span></h2>
-          <div class="educationCard" data-aos="fade-up">
-            <img class="schoolPic" src="images/CSUNLogo.png" alt="California State University, Northridge"style="width: 120px; height: auto;">
-            <ul class="educationInfo">
-              <p>California State University Northridge</p>
-              <p>GPA: 3.75 / 4.00</p>
-              <li>Bachelor of Computer Science</li>
-              <li>Honors & Dean's List</li>
-            </ul>
+      <!-- CONTACT SECTION -->
+      <section class="contactMe" id="contact" data-aos="fade-in">
+        <h2>Contact <span>Me</span></h2>
+        <div class="contactCards">
+          <div class="card">
+            <li>
+              <span class="iconify" data-icon="akar-icons:linkedin-box-fill"></span>
+            </li>
+            <h3>LinkedIn</h3>
+            <a href="https://www.linkedin.com/in/alexanderchakmakian/" target="_blank" rel="noopener" aria-label="Alexander Chakmakian LinkedIn Profile">
+              <p>alexchakmakian</p>
+            </a>
+          </div>
+          <div class="card">
+            <li>
+              <span class="iconify" data-icon="fluent:mail-16-filled"></span>
+            </li>
+            <h3>Email</h3>
+            <p>alexchakmakian@gmail.com</p>
+          </div>
+          <div class="card">
+            <li>
+              <span class="iconify" data-icon="akar-icons:github-fill"></span>
+            </li>
+            <h3>GitHub</h3>
+            <a href="https://github.com/alexchakmakian" target="_blank" rel="noopener" aria-label="Alexander Chakmakian GitHub Profile">
+              <p>alexchakmakian</p>
+            </a>
           </div>
         </div>
-    <!-- SKILLS SECTION -->
-
-    <div class="skillsSection">
-      <h2 class="mySkillsHeading" data-aos="fade-in">My <span>Skills</span></h2>
-      
-      <ul class="skillsIcons" data-aos="fade-up">
-        <li>
-          <span class="iconify iconifySkills" data-icon="logos:java"></span>
-          <span class="iconText">Java</span>
-        </li>
-        <li>
-          <span class="iconify iconifySkills" data-icon="vscode-icons:file-type-python"></span>
-          <span class="iconText">Python</span>
-        </li>
-        <li>
-          <span class="iconify iconifySkills" data-icon="logos:react"></span>
-          <span class="iconText">React</span>
-        </li>
-        <li>
-          <span class="iconify iconifySkills" data-icon="logos:nodejs-icon"></span>
-          <span class="iconText">Node.js</span>
-        </li>
-        <li>
-          <span class="iconify iconifySkills" data-icon="devicon:javascript"></span>
-          <span class="iconText">JavaScript</span>
-        </li>
-        <li>
-          <span class="iconify iconifySkills" data-icon="vscode-icons:file-type-typescript-official"></span>
-          <span class="iconText">TypeScript</span>
-        </li>
-        <li>
-          <span class="iconify iconifySkills" data-icon="vscode-icons:file-type-firebase"></span>
-          <span class="iconText">Firebase</span>
-        </li>
-        <li>
-          <span class="iconify iconifySkills" data-icon="line-md:github-loop"></span>
-          <span class="iconText">GitHub</span>
-        </li>
-        <li>
-          <span class="iconify iconifySkills" data-icon="vscode-icons:file-type-swift"></span>
-          <span class="iconText">Swift</span>
-        </li>
-        <li>
-          <span class="iconify iconifySkills" data-icon="logos:pytorch-icon"></span>
-          <span class="iconText">PyTorch</span>
-        </li>
-        <li>
-          <span class="iconify iconifySkills" data-icon="logos:jira"></span>
-          <span class="iconText">Jira</span>
-        </li>
-        <li>
-          <span class="iconify iconifySkills" data-icon="logos:figma"></span>
-          <span class="iconText">Figma</span>
-        </li>
-        <li>
-          <span class="iconify iconifySkills" data-icon="logos:adobe-photoshop"></span>
-          <span class="iconText">Photoshop</span>
-        </li>
-        <li>
-          <span class="iconify iconifySkills" data-icon="vscode-icons:file-type-html"></span>
-          <span class="iconText">HTML</span>
-        </li>
-        <li>
-          <span class="iconify iconifySkills" data-icon="vscode-icons:file-type-css"></span>
-          <span class="iconText">CSS</span>
-        </li>
-      </ul>
-    </div>
-
-
-    <!-- CONTACT SECTION -->
-
-    <div class="contactMe" data-aos="fade-in">
-      <h2>Contact <span>Me</span></h2>
-      <div class="contactCards">
-        <div class="card">
-          <li>
-            <span class="iconify" data-icon="akar-icons:linkedin-box-fill"></span>
-          </li>
-          <h3>LinkedIn</h3>
-          <a href="https://www.linkedin.com/in/alexanderchakmakian/" target="_blank">
-            <p>alexchakmakian</p>
-          </a>
-        </div>
-        <div class="card">
-          <li>
-            <span class="iconify" data-icon="fluent:mail-16-filled"></span>
-          </li>
-          <h3>Email</h3>
-          <p>alexchakmakian@gmail.com</p>
-        </div>
-        <div class="card">
-          <li>
-            <span class="iconify" data-icon="akar-icons:github-fill"></span>
-          </li>
-          <h3>GitHub</h3>
-          <a href="https://github.com/alexchakmakian" target="_blank">
-            <p>alexchakmakian</p>
-          </a>
-        </div>
-      </div>
-    </div>
+      </section>
+    </main>
 
     <!-- FOOTER SECTION -->
-
-    <div class="footerLinks">
+    <footer class="footerLinks">
       <a
         href="https://www.linkedin.com/in/alexanderchakmakian/"
         target="_blank"
+        rel="noopener"
+        aria-label="LinkedIn Profile"
       >
       <span class="iconify" data-icon="akar-icons:linkedin-box-fill"></span>
       </a>
-      <a href="https://github.com/alexchakmakian" target="_blank">
+      <a href="https://github.com/alexchakmakian" target="_blank" rel="noopener" aria-label="GitHub Profile">
         <span class="iconify" data-icon="akar-icons:github-fill"></span>
       </a>
       <!--
-      <a href="alexresume.pdf" target="_blank">
+      <a href="alexresume.pdf" target="_blank" rel="noopener" aria-label="Resume PDF">
         <span class="iconify" data-icon="akar-icons:paper"></span>
       </a>
       -->
-    </div>
-
+      <p class="copyright" style="color: rgb(158, 158, 158); font-size: 1.5rem;">© 2025 Alexander Chakmakian</p>
+      
     <!-- BACK TO TOP ARROW -->
-    <a href="#" class="topArrow">
+    <a href="#" class="topArrow" aria-label="Back to top">
       <span class="iconify iconifySkills" data-icon="bx:up-arrow-alt"></span>
     </a>
 
