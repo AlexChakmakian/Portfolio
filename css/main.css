@@ -286,6 +286,13 @@ footer {
   font-size: 3rem;
 }
 
+/* MOBILE VIEW SPECIFIC - HIDE BACK TO TOP ARROW */
+@media screen and (max-width: 768px) {
+  .topArrow {
+    display: none !important;
+  }
+}
+
 /* LAPTOP VIEW */
 
 @media screen and (min-width: 1025px) {
