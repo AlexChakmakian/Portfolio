@@ -64,7 +64,12 @@
   .experienceTwo .skillsIcons li:hover {
     transform: scale(1.35);
   }
-  .experienceTwo .iconifySkills {
-    width: 120px;
-  }
+/* Add this to your experienceTwo.css file */
+.experienceTwo .iconifySkills {
+  display: block;
+  width: 100px;
+  height: 100px; /* Force consistent height */
+  object-fit: contain; /* Preserve aspect ratio */
+  margin: 0 auto 1rem auto;
+}
 }

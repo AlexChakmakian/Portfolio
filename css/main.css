@@ -265,7 +265,7 @@ footer {
 }
 
 .footerLinks {
-  height: 10vh;
+  height: 8vh;
   background-color: #21262d;
   display: flex;
   align-items: flex-end;
@@ -283,7 +283,7 @@ footer {
 }
 
 .footerLinks .iconify {
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 /* MOBILE VIEW SPECIFIC - HIDE BACK TO TOP ARROW */
