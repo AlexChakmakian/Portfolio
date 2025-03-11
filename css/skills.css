@@ -22,7 +22,7 @@
   margin: 0;
   max-width: 70rem;
   grid-template-columns: repeat(3, 1fr);
-  padding: 10rem 0 10rem 0;
+  padding: 3.25rem 0 10rem 0;
 }
 
 .skillsIcons li {
