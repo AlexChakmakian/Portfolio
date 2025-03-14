@@ -94,12 +94,19 @@
         .back-button {
             margin-top: 5rem;
         }
+        .highlight-square {
+            box-shadow: inset 0 0 0 4px rgba(255, 215, 0, 0.7) !important;
+        }
+        .highlight-target {
+            box-shadow: inset 0 0 0 4px rgba(0, 255, 0, 0.4) !important;
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>Alex's Chess Bot♟️</h1>
         <p>Can you beat me at chess? Good luck!</p>
+        <p style="font-size: 12px; color: #9a9a9a; margin-top: 0; font-style: italic;">Note: This chess bot is currently in beta</p>
     </div>
 
     <div class="loading-indicator" id="loading"><img src="\images\alex_face.png" alt="Alex" id="alex-thinking-img">Alex is thinking...</div>
@@ -126,6 +133,8 @@
         let board = null;
         let game = new Chess();
         let engineThinking = false;
+        let selectedSquare = null;
+        let highlightedSquares = [];
         
         // These are piece values for evaluating board position
         const pieceValues = {
@@ -211,6 +220,87 @@
             updateStatus();
             engineThinking = false;
             document.getElementById('loading').classList.remove('active');
+            clearHighlights();
+            selectedSquare = null;
+        }
+        
+        // Function to highlight a square
+        function highlightSquare(square) {
+            // Clear any previous highlights
+            clearHighlights();
+            
+            // Add highlight class to selected square
+            const $square = $(`[data-square="${square}"]`);
+            $square.addClass('highlight-square');
+            highlightedSquares.push(square);
+            
+            // Highlight potential move squares
+            const moves = game.moves({
+                square: square,
+                verbose: true
+            });
+            
+            moves.forEach(move => {
+                const $targetSquare = $(`[data-square="${move.to}"]`);
+                $targetSquare.addClass('highlight-target');
+                highlightedSquares.push(move.to);
+            });
+        }
+        
+        // Function to clear highlights
+        function clearHighlights() {
+            highlightedSquares.forEach(square => {
+                $(`[data-square="${square}"]`).removeClass('highlight-square highlight-target');
+            });
+            highlightedSquares = [];
+        }
+        
+        // Add a click handler for squares
+        function onSquareClick(square) {
+            // If game is over or AI is thinking, ignore clicks
+            if (game.game_over() || engineThinking) return;
+            
+            // If we already have a selected square
+            if (selectedSquare) {
+                // Try to make a move from selected square to clicked square
+                const move = game.move({
+                    from: selectedSquare,
+                    to: square,
+                    promotion: 'q' // Always promote to queen for simplicity
+                });
+                
+                // Clear highlights and selection regardless of move validity
+                clearHighlights();
+                
+                // If move was illegal, just clear selection or select new piece
+                if (move === null) {
+                    // If clicked on same square or another valid piece, select that instead
+                    const piece = game.get(square);
+                    if (piece && piece.color === 'w') {
+                        selectedSquare = square;
+                        highlightSquare(square);
+                        return;
+                    }
+                    
+                    selectedSquare = null;
+                    return;
+                }
+                
+                // Move was successful
+                selectedSquare = null;
+                board.position(game.fen());
+                updateStatus();
+                
+                // Make AI move after a short delay
+                setTimeout(makeComputerMove, 250);
+            } else {
+                // Nothing selected yet, check if there's a piece
+                const piece = game.get(square);
+                if (piece && piece.color === 'w') {
+                    selectedSquare = square;
+                    highlightSquare(square);
+                }
+            }
         }
 
         function onDragStart(source, piece) {
@@ -218,6 +308,11 @@
             if (game.game_over() || engineThinking) return false;
             // Only allow white pieces to be moved (player is white)
             if (piece.search(/^b/) !== -1) return false;
+            
+            // Clear any click selection
+            clearHighlights();
+            selectedSquare = null;
+            return true;
         }
 
         // Get position value for a piece based on its position and type
@@ -424,6 +519,12 @@
                 
                 board = Chessboard('myBoard', config);
                 
+                // Add click handlers to squares
+                $('#myBoard').on('click', '.square-55d63', function() {
+                    const square = $(this).attr('data-square');
+                    onSquareClick(square);
+                });
+                
                 // Apply custom square colors
                 window.setTimeout(function() {
                 // Add a style element with our custom CSS
@@ -461,6 +562,8 @@
                     game.undo(); // Undo your move too
                 }
                 board.position(game.fen());
+                clearHighlights();
+                selectedSquare = null;
                 updateStatus();
             });
         });
