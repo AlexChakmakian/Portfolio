@@ -149,7 +149,6 @@
             justify-content: center;
             align-items: center;
             gap: 2rem;
-            padding: 15px 0;
             box-shadow: 0 -2px 4px rgba(0,0,0,0.3);
         }
         
@@ -172,22 +171,29 @@
 </head>
 <body>
     <!-- Fixed Navigation Header -->
-    <nav id="main-navigation" role="navigation" aria-label="Main Navigation">
-      <ul>
-        <li>
-          <a class="myLinks" href="https://www.linkedin.com/in/alexanderchakmakian/" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
-            <span class="iconify" data-icon="akar-icons:linkedin-box-fill"></span>
-            LinkedIn
-          </a>
-        </li>
-        <li>
-          <a class="myLinks" href="https://github.com/alexchakmakian" target="_blank" rel="noopener" aria-label="GitHub Profile">
-            <span class="iconify" data-icon="akar-icons:github-fill"></span>
-            GitHub
-          </a>
-        </li>
-      </ul>
-    </nav>
+<!-- Update the navigation section -->
+<nav id="main-navigation" role="navigation" aria-label="Main Navigation">
+    <ul>
+      <li>
+        <a class="myLinks" href="index.html" aria-label="Back to Home">
+          <span class="iconify" data-icon="akar-icons:home"></span>
+          Back to Home
+        </a>
+      </li>
+      <li>
+        <a class="myLinks" href="https://www.linkedin.com/in/alexanderchakmakian/" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
+          <span class="iconify" data-icon="akar-icons:linkedin-box-fill"></span>
+          LinkedIn
+        </a>
+      </li>
+      <li>
+        <a class="myLinks" href="https://github.com/alexchakmakian" target="_blank" rel="noopener" aria-label="GitHub Profile">
+          <span class="iconify" data-icon="akar-icons:github-fill"></span>
+          GitHub
+        </a>
+      </li>
+    </ul>
+  </nav>
 
     <div class="header">
         <h1>Alex's Chess Bot♟️</h1>
@@ -206,9 +212,7 @@
         </div>
         <div class="status" id="status">Make your move</div>
     </div>
-
-    <button type="button" onclick="window.location.href='index.html'" class="back-button">Back to Home</button>
-
+    
     <!-- Fixed Footer -->
     <footer class="footerLinks">
       <a href="https://www.linkedin.com/in/alexanderchakmakian/" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
