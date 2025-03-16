@@ -217,8 +217,8 @@
             <div id="myBoard"></div>
         </div>
         <div class="game-controls">
-            <button id="startBtn">New Game 😏</button>
-            <button id="undoBtn">Undo Move 🙄</button>
+            <button id="startBtn">New Game⭐</button>
+            <button id="undoBtn">Undo Move↩️</button>
         </div>
         <div class="status" id="status">Make your move</div>
     </div>
@@ -485,7 +485,7 @@
 
         function updateStatus() {
             let status = '';
-            let moveColor = game.turn() === 'b' ? 'Black' : 'White';
+            let moveColor = game.turn() === 'b' ? 'my' : 'your';
             
             // Checkmate?
             if (game.in_checkmate()) {
@@ -497,7 +497,7 @@
             }
             // Game still on
             else {
-                status = moveColor + ' to move';
+                status = moveColor + ' move';
                 // Check?
                 if (game.in_check()) {
                     status += ', ' + moveColor + ' is in check';
