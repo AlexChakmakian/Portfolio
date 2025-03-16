@@ -22,8 +22,12 @@
         }
         .board-container {
             margin: 2rem auto;
-            max-width: 700px;
+            max-width: 525px;
             width: 100%;
+        }
+        .notation-322f9 { /* COLOR OF Numbers (leaving it our rn)*/
+         color: rgb(255, 255, 255) !important;
+         opacity: 0;
         }
         #myBoard {
             width: 100%;
@@ -92,11 +96,17 @@
         .loading-indicator.active img {
             opacity: 100%; 
         }
+
         .board-background {
-            background-color: rgb(110, 210, 227);
-            padding: 5px;
-            border-radius: 4px;
+        background-color: rgb(110, 210, 227);
+        padding: 8px; /* Increase padding from 5px to 8px for even borders */
+        border-radius: 6px;
+        box-sizing: border-box; /* Make sure padding is included in width calculations */
+        width: 100%;
+        display: flex;
+        justify-content: center;
         }
+
         .back-button {
             margin-top: 5rem;
         }
@@ -130,7 +140,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 1.2rem;
+            font-size: 1.0rem;
             transition: color 0.3s;
         }
         
@@ -154,7 +164,7 @@
         
         .footerLinks a {
             color: #ffffff;
-            font-size: 1.5rem;
+            font-size: 1rem;
             transition: color 0.3s;
         }
         
@@ -165,7 +175,7 @@
         .copyright {
             margin-left: 2rem;
             color: rgb(158, 158, 158);
-            font-size: 1.2rem;
+            font-size: 0.75rem;
         }
     </style>
 </head>
