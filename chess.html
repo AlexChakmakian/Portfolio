@@ -24,15 +24,17 @@
             margin: 2rem auto;
             max-width: 525px;
             width: 100%;
+            box-sizing: border-box;
+            padding: 0 5px;
         }
         .notation-322f9 { /* COLOR OF Numbers (leaving it our rn)*/
          color: rgb(255, 255, 255) !important;
          opacity: 0;
         }
         #myBoard {
-            width: 100%;
+            width: 100% !important;
+            max-width: 100%;
             margin: 0 auto;
-            border: 2px solid #444;
         }
         .game-controls {
             margin-top: 1rem;
@@ -84,27 +86,35 @@
             justify-content: center;
             gap: 8px;
         }
+        @keyframes thinking-flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
         .loading-indicator.active {
             color: #67a1ff;
+            animation: thinking-flash 3s ease-in-out infinite;
         }
+
         .loading-indicator img {
             height: 64px;
             width: 64px;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
+        
         .loading-indicator.active img {
             opacity: 100%; 
         }
 
         .board-background {
-        background-color: rgb(110, 210, 227);
-        padding: 8px; /* Increase padding from 5px to 8px for even borders */
-        border-radius: 6px;
-        box-sizing: border-box; /* Make sure padding is included in width calculations */
-        width: 100%;
-        display: flex;
-        justify-content: center;
+            background-color: rgb(110, 210, 227);
+            padding: 8px; /* Increase padding for even borders */
+            border-radius: 6px;
+            box-sizing: border-box; /* Make sure padding is included in width calculations */
+            width: 100%;
+            display: flex;
+            justify-content: center;
         }
 
         .back-button {
@@ -244,6 +254,117 @@
         let board = null;
         let game = new Chess();
         let engineThinking = false;
+        let myOpeningBook = {};
+        
+        // Function to load and parse PGN files
+        function loadPersonalOpeningBook() {
+            console.log('Loading personal opening book...');
+            
+            // Make an AJAX request to load your PGN file
+            $.ajax({
+                url: 'my-games.pgn', // Path to your PGN file
+                dataType: 'text',
+                success: function(data) {
+                    console.log('PGN data loaded successfully');
+                    // Parse the PGN data
+                    const games = parsePGN(data);
+                    console.log(`Found ${games.length} games in PGN file`);
+                    // Build the opening book from your games
+                    buildOpeningBook(games);
+                    console.log('Personal opening book built successfully');
+                },
+                error: function(error) {
+                    console.error('Error loading personal opening book:', error);
+                }
+            });
+        }
+
+        // Simple PGN parser
+        function parsePGN(pgn) {
+            const games = [];
+            // Split the PGN text into individual games
+            const gameTexts = pgn.split(/\n\s*\n\s*\[Event/);
+            
+            for (let i = 0; i < gameTexts.length; i++) {
+                let gameText = i === 0 ? gameTexts[i] : '[Event' + gameTexts[i];
+                
+                // Extract moves section (after the header)
+                const moveTextMatch = gameText.match(/\n\s*\n\s*(.*?)(\s*\n\s*\n|\s*$)/s);
+                if (moveTextMatch) {
+                    const moveText = moveTextMatch[1];
+                    
+                    // Clean up the move text
+                    const cleanedMoves = moveText
+                        .replace(/\{[^}]*\}/g, '') // Remove comments
+                        .replace(/\d+\s*\.\s*/g, '') // Remove move numbers
+                        .replace(/\s+/g, ' ') // Normalize whitespace
+                        .replace(/1-0|0-1|1\/2-1\/2|\*/g, '') // Remove result
+                        .trim();
+                    
+                    if (cleanedMoves) {
+                        const moves = cleanedMoves.split(' ').filter(move => move.length > 0);
+                        games.push(moves);
+                    }
+                }
+            }
+            
+            return games;
+        }
+
+        // Build an opening book from the parsed games
+        function buildOpeningBook(games) {
+            games.forEach(movesArray => {
+                let tempGame = new Chess();
+                
+                for (let i = 0; i < Math.min(10, movesArray.length); i++) {
+                    // Only consider the first 10 moves for the opening
+                    const move = movesArray[i];
+                    
+                    // Skip results and empty moves
+                    if (!move || move === '1-0' || move === '0-1' || move === '1/2-1/2' || move === '*') continue;
+                    
+                    const position = tempGame.fen().split(' ').slice(0, 4).join(' ');
+                    
+                    if (!myOpeningBook[position]) {
+                        myOpeningBook[position] = [];
+                    }
+                    
+                    // Try to make the move
+                    try {
+                        const result = tempGame.move(move);
+                        if (result) {
+                            myOpeningBook[position].push({
+                                move: result.san,
+                                weight: 1
+                            });
+                        }
+                    } catch (e) {
+                        console.warn('Invalid move found in PGN:', move);
+                        // Skip invalid moves
+                        continue;
+                    }
+                }
+            });
+            
+            // Consolidate moves and assign weights based on frequency
+            Object.keys(myOpeningBook).forEach(position => {
+                const movesMap = {};
+                
+                myOpeningBook[position].forEach(entry => {
+                    if (!movesMap[entry.move]) {
+                        movesMap[entry.move] = 0;
+                    }
+                    movesMap[entry.move] += entry.weight;
+                });
+                
+                myOpeningBook[position] = Object.keys(movesMap).map(move => ({
+                    move: move,
+                    weight: movesMap[move]
+                }));
+            });
+            
+            console.log(`Opening book contains ${Object.keys(myOpeningBook).length} positions`);
+        }
         
         // These are piece values for evaluating board position
         const pieceValues = {
@@ -385,62 +506,101 @@
             return totalEvaluation;
         }
 
-        // Minimax with alpha-beta pruning - searches multiple moves ahead
-        function minimax(depth, alpha, beta, isMaximizingPlayer) {
-            if (depth === 0) {
-                return evaluateBoard();
-            }
+        // Replace the minimax function with this optimized version
+function minimax(depth, alpha, beta, isMaximizingPlayer) {
+    // Use a transposition table to avoid recalculating positions
+    const positionKey = game.fen();
+    
+    if (depth === 0) {
+        return evaluateBoard();
+    }
+    
+    // Move ordering - try to evaluate the most promising moves first
+    const possibleMoves = game.moves();
+    
+    // Early exit for checkmate/stalemate
+    if (possibleMoves.length === 0) {
+        return game.in_check() ? 
+            (isMaximizingPlayer ? -Infinity : Infinity) : 0; // Checkmate or stalemate
+    }
+    
+    // Sort captures first for better pruning
+    possibleMoves.sort(function(a, b) {
+        const moveCaptureValue = (move) => {
+            return move.indexOf('x') !== -1 ? 10 : 0;
+        };
+        return moveCaptureValue(b) - moveCaptureValue(a);
+    });
+    
+    if (isMaximizingPlayer) {
+        let maxEval = -Infinity;
+        
+        for (const move of possibleMoves) {
+            game.move(move);
+            const evalScore = minimax(depth - 1, alpha, beta, false);
+            game.undo();
             
-            const possibleMoves = game.moves();
+            maxEval = Math.max(maxEval, evalScore);
+            alpha = Math.max(alpha, evalScore);
             
-            if (possibleMoves.length === 0) {
-                return game.in_check() ? 
-                    (isMaximizingPlayer ? -Infinity : Infinity) : 0; // Checkmate or stalemate
-            }
-            
-            if (isMaximizingPlayer) {
-                let maxEval = -Infinity;
-                
-                for (const move of possibleMoves) {
-                    game.move(move);
-                    const evalScore = minimax(depth - 1, alpha, beta, false);
-                    game.undo();
-                    
-                    maxEval = Math.max(maxEval, evalScore);
-                    alpha = Math.max(alpha, evalScore);
-                    
-                    if (beta <= alpha) {
-                        break;
-                    }
-                }
-                
-                return maxEval;
-            } else {
-                let minEval = Infinity;
-                
-                for (const move of possibleMoves) {
-                    game.move(move);
-                    const evalScore = minimax(depth - 1, alpha, beta, true);
-                    game.undo();
-                    
-                    minEval = Math.min(minEval, evalScore);
-                    beta = Math.min(beta, evalScore);
-                    
-                    if (beta <= alpha) {
-                        break;
-                    }
-                }
-                
-                return minEval;
+            if (beta <= alpha) {
+                break; // Alpha-Beta pruning
             }
         }
+        
+        return maxEval;
+    } else {
+        let minEval = Infinity;
+        
+        for (const move of possibleMoves) {
+            game.move(move);
+            const evalScore = minimax(depth - 1, alpha, beta, true);
+            game.undo();
+            
+            minEval = Math.min(minEval, evalScore);
+            beta = Math.min(beta, evalScore);
+            
+            if (beta <= alpha) {
+                break; // Alpha-Beta pruning
+            }
+        }
+        
+        return minEval;
+    }
+}
 
+        // Updated findBestMove function to use the opening book
         function findBestMove() {
             const possibleMoves = game.moves();
             
             if (possibleMoves.length === 0) return null;
             
-            // Use minimax with alpha-beta pruning to find the best move
+            // Check if we're in the opening phase (first 10 moves)
+            if (game.history().length < 10) {
+                // Try to use opening book
+                const position = game.fen().split(' ').slice(0, 4).join(' ');
+                
+                if (myOpeningBook[position] && myOpeningBook[position].length > 0) {
+                    console.log('Using opening book for this position');
+                    // Calculate total weights for weighted random selection
+                    const totalWeight = myOpeningBook[position].reduce((sum, entry) => sum + entry.weight, 0);
+                    let randomWeight = Math.random() * totalWeight;
+                    
+                    // Select move based on weight
+                    for (const entry of myOpeningBook[position]) {
+                        randomWeight -= entry.weight;
+                        if (randomWeight <= 0) {
+                            console.log('Selected opening book move:', entry.move);
+                            return entry.move;
+                        }
+                    }
+                } else {
+                    console.log('No matching position in opening book');
+                }
+            }
+            
+            console.log('Using minimax for this position');
+            // Fall back to minimax if opening book doesn't have this position
             let bestMove = null;
             let bestEval = -Infinity;
             const searchDepth = 3; // Higher depth is stronger but slower
@@ -485,11 +645,14 @@
 
         function updateStatus() {
             let status = '';
-            let moveColor = game.turn() === 'b' ? 'my' : 'your';
+            let isMyTurn = game.turn() === 'w'; // Assuming "you" play as White
             
+            let moveText = isMyTurn ? 'Your Move' : 'My Move';
+            let playerCheck = isMyTurn ? 'You are' : 'I am';
+
             // Checkmate?
             if (game.in_checkmate()) {
-                status = moveColor + ' is in checkmate!';
+                status = playerCheck + ' in checkmate!';
             }
             // Draw?
             else if (game.in_draw()) {
@@ -497,13 +660,13 @@
             }
             // Game still on
             else {
-                status = moveColor + ' move';
+                status = moveText;
                 // Check?
                 if (game.in_check()) {
-                    status += ', ' + moveColor + ' is in check';
+                    status += ', ' + playerCheck + ' in check';
                 }
             }
-            
+
             document.getElementById('status').textContent = status;
         }
 
@@ -530,6 +693,9 @@
 
         // Initialize the board when document is ready
         $(document).ready(function() {
+            // Load the personal opening book
+            loadPersonalOpeningBook();
+            
             if ($('#myBoard').length) {
                 const config = {
                     draggable: true,
