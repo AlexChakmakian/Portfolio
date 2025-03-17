@@ -1,0 +1,205 @@
+body {
+    font-family: Inter, Arial, sans-serif;
+    background-color: #363636;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    margin: 0;
+    padding-top: 70px; /* Space for fixed header */
+    padding-bottom: 70px; /* Space for fixed footer */
+}
+
+.board-container {
+    margin: 2rem auto;
+    max-width: 525px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 5px;
+    touch-action: none; /* Prevents browser handling of all panning and zooming gestures */
+}
+
+.notation-322f9 { /* COLOR OF Numbers (leaving it our rn)*/
+    color: rgb(255, 255, 255) !important;
+    opacity: 0;
+}
+
+#myBoard {
+    width: 100% !important;
+    max-width: 100%;
+    margin: 0 auto;
+    touch-action: none;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+.game-controls {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+button {
+    background-color: #67a1ff;
+    color: white;
+    border: none;
+    padding: 0.5rem 0.90rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #4d87e6;
+}
+
+.status {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: -1rem;
+}
+
+.back-link {
+    margin-top: 2rem;
+    color: #67a1ff;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.loading-indicator {
+    text-align: center;
+    margin-top: 0x;
+    margin-bottom: -35px;
+    color: #363636;
+    font-weight: bold;
+    font-size: 25px;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+@keyframes thinking-flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.loading-indicator.active {
+    color: #67a1ff;
+    animation: thinking-flash 3s ease-in-out infinite;
+}
+
+.loading-indicator img {
+    height: 70px;
+    width: 70px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.loading-indicator.active img {
+    opacity: 100%; 
+}
+
+.board-background {
+    background-color: rgb(110, 210, 227);
+    padding: 8px; /* Increase padding for even borders */
+    border-radius: 6px;
+    box-sizing: border-box; /* Make sure padding is included in width calculations */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.back-button {
+    margin-top: 5rem;
+}
+
+/* Fixed navigation and footer */
+#main-navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #2a2a2a;
+    z-index: 100;
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+#main-navigation ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.myLinks {
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.0rem;
+    transition: color 0.3s;
+}
+
+.myLinks:hover {
+    color: #67a1ff;
+}
+
+.footerLinks {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #2a2a2a;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.3);
+}
+
+.footerLinks a {
+    color: #ffffff;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.footerLinks a:hover {
+    color: #67a1ff;
+}
+
+.copyright {
+    margin-left: 2rem;
+    color: rgb(158, 158, 158);
+    font-size: 0.75rem;
+}
+
+/* Chess Board Square Colors */
+.white-1e1d7, [class*="white-"] { 
+    background-color: #7699af !important; 
+}
+
+.black-3c85d, [class*="black-"] { 
+    background-color: #d5e1e6 !important; 
+}

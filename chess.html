@@ -5,220 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex's Chess Bot</title>
     <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+    <link rel="stylesheet" href="chess-styles.css">
     <!-- Add iconify for social media icons -->
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
-    <style>
-        body {
-            font-family: Inter, Arial, sans-serif;
-            background-color: #363636;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem;
-            margin: 0;
-            padding-top: 70px; /* Space for fixed header */
-            padding-bottom: 70px; /* Space for fixed footer */
-        }
-        .board-container {
-            margin: 2rem auto;
-            max-width: 525px;
-            width: 100%;
-            box-sizing: border-box;
-            padding: 0 5px;
-        }
-        .notation-322f9 { /* COLOR OF Numbers (leaving it our rn)*/
-         color: rgb(255, 255, 255) !important;
-         opacity: 0;
-        }
-        #myBoard {
-            width: 100% !important;
-            max-width: 100%;
-            margin: 0 auto;
-        }
-        .game-controls {
-            margin-top: 1rem;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-        button {
-            background-color: #67a1ff;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #4d87e6;
-        }
-        .status {
-            margin-top: 1rem;
-            font-size: 1.2rem;
-            text-align: center;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-            margin-top: -1rem;
-        }
-        .back-link {
-            margin-top: 2rem;
-            color: #67a1ff;
-            text-decoration: none;
-        }
-        .back-link:hover {
-            text-decoration: underline;
-        }
-        .loading-indicator {
-            text-align: center;
-            margin-top: 1px;
-            margin-bottom: -25px;
-            color: #363636;
-            font-weight: bold;
-            font-size: 23px;
-            transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        @keyframes thinking-flash {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-
-        .loading-indicator.active {
-            color: #67a1ff;
-            animation: thinking-flash 3s ease-in-out infinite;
-        }
-
-        .loading-indicator img {
-            height: 64px;
-            width: 64px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .loading-indicator.active img {
-            opacity: 100%; 
-        }
-
-        .board-background {
-            background-color: rgb(110, 210, 227);
-            padding: 8px; /* Increase padding for even borders */
-            border-radius: 6px;
-            box-sizing: border-box; /* Make sure padding is included in width calculations */
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
-        .back-button {
-            margin-top: 5rem;
-        }
-        
-        /* Fixed navigation and footer */
-        #main-navigation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: #2a2a2a;
-            z-index: 100;
-            padding: 15px 0;
-            display: flex;
-            justify-content: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        #main-navigation ul {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .myLinks {
-            color: #ffffff;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.0rem;
-            transition: color 0.3s;
-        }
-        
-        .myLinks:hover {
-            color: #67a1ff;
-        }
-        
-        .footerLinks {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: #2a2a2a;
-            z-index: 100;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            box-shadow: 0 -2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .footerLinks a {
-            color: #ffffff;
-            font-size: 1rem;
-            transition: color 0.3s;
-        }
-        
-        .footerLinks a:hover {
-            color: #67a1ff;
-        }
-        
-        .copyright {
-            margin-left: 2rem;
-            color: rgb(158, 158, 158);
-            font-size: 0.75rem;
-        }
-    </style>
 </head>
 <body>
     <!-- Fixed Navigation Header -->
-<!-- Update the navigation section -->
-<nav id="main-navigation" role="navigation" aria-label="Main Navigation">
-    <ul>
-      <li>
-        <a class="myLinks" href="index.html" aria-label="Back to Home">
-          <span class="iconify" data-icon="akar-icons:home"></span>
-          Back to Home
-        </a>
-      </li>
-      <li>
-        <a class="myLinks" href="https://www.linkedin.com/in/alexanderchakmakian/" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
-          <span class="iconify" data-icon="akar-icons:linkedin-box-fill"></span>
-          LinkedIn
-        </a>
-      </li>
-      <li>
-        <a class="myLinks" href="https://github.com/alexchakmakian" target="_blank" rel="noopener" aria-label="GitHub Profile">
-          <span class="iconify" data-icon="akar-icons:github-fill"></span>
-          GitHub
-        </a>
-      </li>
-    </ul>
-  </nav>
+    <nav id="main-navigation" role="navigation" aria-label="Main Navigation">
+        <ul>
+          <li>
+            <a class="myLinks" href="index.html" aria-label="Back to Home">
+              <span class="iconify" data-icon="akar-icons:home"></span>
+              Back to Home
+            </a>
+          </li>
+          <li>
+            <a class="myLinks" href="https://www.linkedin.com/in/alexanderchakmakian/" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
+              <span class="iconify" data-icon="akar-icons:linkedin-box-fill"></span>
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a class="myLinks" href="https://github.com/alexchakmakian" target="_blank" rel="noopener" aria-label="GitHub Profile">
+              <span class="iconify" data-icon="akar-icons:github-fill"></span>
+              GitHub
+            </a>
+          </li>
+        </ul>
+    </nav>
 
     <div class="header">
         <h1>Alex's Chess Bot♟️</h1>
         <p>Can you beat me at chess? Good luck!</p>
-        <p style="font-size: 12px; color: #9a9a9a; margin-top: 0; font-style: italic;">Note: This chess bot is currently in beta</p>
     </div>
 
     <div class="loading-indicator" id="loading"><img src="\images\alex_face.png" alt="Alex" id="alex-thinking-img">Alex is thinking...</div>
@@ -255,6 +73,7 @@
         let game = new Chess();
         let engineThinking = false;
         let myOpeningBook = {};
+        const moveSound = new Audio('https://lichess1.org/assets/sound/standard/Move.ogg');
         
         // Function to load and parse PGN files
         function loadPersonalOpeningBook() {
@@ -506,68 +325,67 @@
             return totalEvaluation;
         }
 
-        // Replace the minimax function with this optimized version
-function minimax(depth, alpha, beta, isMaximizingPlayer) {
-    // Use a transposition table to avoid recalculating positions
-    const positionKey = game.fen();
-    
-    if (depth === 0) {
-        return evaluateBoard();
-    }
-    
-    // Move ordering - try to evaluate the most promising moves first
-    const possibleMoves = game.moves();
-    
-    // Early exit for checkmate/stalemate
-    if (possibleMoves.length === 0) {
-        return game.in_check() ? 
-            (isMaximizingPlayer ? -Infinity : Infinity) : 0; // Checkmate or stalemate
-    }
-    
-    // Sort captures first for better pruning
-    possibleMoves.sort(function(a, b) {
-        const moveCaptureValue = (move) => {
-            return move.indexOf('x') !== -1 ? 10 : 0;
-        };
-        return moveCaptureValue(b) - moveCaptureValue(a);
-    });
-    
-    if (isMaximizingPlayer) {
-        let maxEval = -Infinity;
-        
-        for (const move of possibleMoves) {
-            game.move(move);
-            const evalScore = minimax(depth - 1, alpha, beta, false);
-            game.undo();
+        function minimax(depth, alpha, beta, isMaximizingPlayer) {
+            // Use a transposition table to avoid recalculating positions
+            const positionKey = game.fen();
             
-            maxEval = Math.max(maxEval, evalScore);
-            alpha = Math.max(alpha, evalScore);
+            if (depth === 0) {
+                return evaluateBoard();
+            }
             
-            if (beta <= alpha) {
-                break; // Alpha-Beta pruning
+            // Move ordering - try to evaluate the most promising moves first
+            const possibleMoves = game.moves();
+            
+            // Early exit for checkmate/stalemate
+            if (possibleMoves.length === 0) {
+                return game.in_check() ? 
+                    (isMaximizingPlayer ? -Infinity : Infinity) : 0; // Checkmate or stalemate
+            }
+            
+            // Sort captures first for better pruning
+            possibleMoves.sort(function(a, b) {
+                const moveCaptureValue = (move) => {
+                    return move.indexOf('x') !== -1 ? 10 : 0;
+                };
+                return moveCaptureValue(b) - moveCaptureValue(a);
+            });
+            
+            if (isMaximizingPlayer) {
+                let maxEval = -Infinity;
+                
+                for (const move of possibleMoves) {
+                    game.move(move);
+                    const evalScore = minimax(depth - 1, alpha, beta, false);
+                    game.undo();
+                    
+                    maxEval = Math.max(maxEval, evalScore);
+                    alpha = Math.max(alpha, evalScore);
+                    
+                    if (beta <= alpha) {
+                        break; // Alpha-Beta pruning
+                    }
+                }
+                
+                return maxEval;
+            } else {
+                let minEval = Infinity;
+                
+                for (const move of possibleMoves) {
+                    game.move(move);
+                    const evalScore = minimax(depth - 1, alpha, beta, true);
+                    game.undo();
+                    
+                    minEval = Math.min(minEval, evalScore);
+                    beta = Math.min(beta, evalScore);
+                    
+                    if (beta <= alpha) {
+                        break; // Alpha-Beta pruning
+                    }
+                }
+                
+                return minEval;
             }
         }
-        
-        return maxEval;
-    } else {
-        let minEval = Infinity;
-        
-        for (const move of possibleMoves) {
-            game.move(move);
-            const evalScore = minimax(depth - 1, alpha, beta, true);
-            game.undo();
-            
-            minEval = Math.min(minEval, evalScore);
-            beta = Math.min(beta, evalScore);
-            
-            if (beta <= alpha) {
-                break; // Alpha-Beta pruning
-            }
-        }
-        
-        return minEval;
-    }
-}
 
         // Updated findBestMove function to use the opening book
         function findBestMove() {
@@ -632,7 +450,7 @@ function minimax(depth, alpha, beta, isMaximizingPlayer) {
             
             // Illegal move
             if (move === null) return 'snapback';
-
+            moveSound.play();
             updateStatus();
             
             // Make the AI move after a short delay
@@ -652,11 +470,11 @@ function minimax(depth, alpha, beta, isMaximizingPlayer) {
 
             // Checkmate?
             if (game.in_checkmate()) {
-                status = playerCheck + ' in checkmate!';
+                status = playerCheck + ' in checkmate!♜😵';
             }
             // Draw?
             else if (game.in_draw()) {
-                status = 'Game is drawn';
+                status = 'Game is drawn♟️🤝';
             }
             // Game still on
             else {
@@ -683,6 +501,7 @@ function minimax(depth, alpha, beta, isMaximizingPlayer) {
                 if (bestMove) {
                     game.move(bestMove);
                     board.position(game.fen());
+                    moveSound.play();
                 }
                 
                 engineThinking = false;
@@ -707,30 +526,21 @@ function minimax(depth, alpha, beta, isMaximizingPlayer) {
                 };
                 
                 board = Chessboard('myBoard', config);
-                
-                // Apply custom square colors
-                window.setTimeout(function() {
-                // Add a style element with our custom CSS
-                $('head').append(`
-                 <style>
-                 .white-1e1d7, [class*="white-"] { background-color: #7699af !important; }
-                .black-3c85d, [class*="black-"] { background-color: #d5e1e6 !important; }
-                </style>
-`);
                 board.resize();
-                }, 100);
                 
                 // Ensure proper sizing on window resize
                 $(window).resize(function() {
                     board.resize();
-                    $('.square-light').css('background-color', '#7699af');
-                    $('.square-dark').css('background-color', '#d5e1e6');
                 });
                 
                 updateStatus();
             }
         });
+        
         // Button handlers
+        moveSound.load();
+        moveSound.volume = 0.20;
+
         $(document).ready(function() {
             $('#startBtn').on('click', function() {
                 if (engineThinking) return;
@@ -746,21 +556,6 @@ function minimax(depth, alpha, beta, isMaximizingPlayer) {
                 board.position(game.fen());
                 updateStatus();
             });
-            
-            // Add CSS for better mobile experience
-            $('head').append(`
-                <style>
-                    .board-container {
-                        touch-action: none; /* Prevents browser handling of all panning and zooming gestures */
-                    }
-                    #myBoard {
-                        touch-action: none;
-                        -webkit-user-select: none; /* Safari */
-                        -ms-user-select: none; /* IE 10 and IE 11 */
-                        user-select: none; /* Standard syntax */
-                    }
-                </style>
-            `);
             
             // Prevent page scrolling when interacting with chess pieces on mobile
             $('#myBoard').on('touchmove', function(e) {
