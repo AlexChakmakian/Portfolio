@@ -203,3 +203,35 @@ button:hover {
 .black-3c85d, [class*="black-"] { 
     background-color: #d5e1e6 !important; 
 }
+.featured-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 5px;
+    font-size: 1.0rem;
+}
+
+.latimes-logo {
+    height: 23px;
+    margin-left: 0px;
+}
+
+@media (max-width: 500px) {
+    .featured-text {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .latimes-logo {
+        margin-left: 0;
+        height: 25px;
+    }
+}
+
+.feature-credit {
+    font-style: italic;
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: #d0d0d0;
+}
