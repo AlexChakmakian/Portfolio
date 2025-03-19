@@ -37,11 +37,10 @@
     <div class="header">
         <h1>Alex's Chess Bot♟️</h1>
         <p>Can you beat me at chess? Good luck!</p>
-        <p class="featured-text">
-            <em class="feature-credit">Engine based on games my chess games - Featured on</em>
-            <img src="\images\LATimes_logo.png" alt="LA Times Logo" class="latimes-logo">
-        </p>
     </div>
+
+    <!-- Status text now appears above the board -->
+    <div class="status" id="status">Make your move</div>
 
     <div class="loading-indicator" id="loading"><img src="\images\alex_face.png" alt="Alex" id="alex-thinking-img">Alex is thinking...</div>
     <div class="board-container">
@@ -52,7 +51,14 @@
             <button id="startBtn">New Game⭐</button>
             <button id="undoBtn">Undo Move↩️</button>
         </div>
-        <div class="status" id="status">Make your move</div>
+    </div>
+    
+    <!-- Featured text below the board -->
+    <div class="featured-container">
+        <p class="featured-text">
+            <em class="feature-credit">engine trained on my own games</em>
+            <!--  <img src="\images\LATimes_logo.png" alt="LA Times Logo" class="latimes-logo">  -->
+        </p>
     </div>
     
     <!-- Fixed Footer -->
@@ -489,7 +495,7 @@
                 }
             }
 
-            document.getElementById('status').textContent = status;
+            document.getElementById('status').innerHTML = status;
         }
 
         function makeComputerMove() {
