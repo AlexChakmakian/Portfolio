@@ -83,7 +83,37 @@
         let game = new Chess();
         let engineThinking = false;
         let myOpeningBook = {};
-        const moveSound = new Audio('https://lichess1.org/assets/sound/standard/Move.ogg');
+        let moveSound;
+
+        // Initialize sound
+        function initSound() {
+            moveSound = new Audio('https://lichess1.org/assets/sound/standard/Move.mp3');
+            moveSound.volume = 0.2;
+            
+            // Enable audio on first user interaction (required for mobile)
+            document.addEventListener('click', enableAudio, { once: true });
+            document.addEventListener('touchstart', enableAudio, { once: true });
+        }
+
+        // Function to enable audio system
+        function enableAudio() {
+            // Play and immediately pause to activate audio system
+            moveSound.play().then(() => {
+                moveSound.pause();
+                moveSound.currentTime = 0;
+                console.log('Audio system enabled');
+            }).catch(e => {
+                console.log('Could not enable audio:', e);
+            });
+        }
+
+        // Simple play function that works on all devices
+        function playMoveSound() {
+            // Create a fresh instance for each play (works better on mobile)
+            const sound = new Audio(moveSound.src);
+            sound.volume = moveSound.volume;
+            sound.play().catch(e => {}); // Ignore errors
+        }
         
         // Function to load and parse PGN files
         function loadPersonalOpeningBook() {
@@ -460,7 +490,10 @@
             
             // Illegal move
             if (move === null) return 'snapback';
-            moveSound.play();
+            
+            // Play sound using our simple method
+            playMoveSound();
+            
             updateStatus();
             
             // Make the AI move after a short delay
@@ -511,7 +544,7 @@
                 if (bestMove) {
                     game.move(bestMove);
                     board.position(game.fen());
-                    moveSound.play();
+                    playMoveSound();
                 }
                 
                 engineThinking = false;
@@ -522,6 +555,9 @@
 
         // Initialize the board when document is ready
         $(document).ready(function() {
+            // Initialize sound
+            initSound();
+            
             // Load the personal opening book
             loadPersonalOpeningBook();
             
@@ -548,9 +584,6 @@
         });
         
         // Button handlers
-        moveSound.load();
-        moveSound.volume = 0.20;
-
         $(document).ready(function() {
             $('#startBtn').on('click', function() {
                 if (engineThinking) return;

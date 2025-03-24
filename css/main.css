@@ -90,10 +90,11 @@ span {
 
 .myname {
   font-size: clamp(5vw, 6rem);
-  font-family: "Alfa Slab One";
-  font-weight: 100;
+  font-family: 'Boldonse', 'Arial Black', Helvetica, sans-serif;
+  font-weight: 100; /* Medium */
   margin: 0;
   margin-bottom: 1.5rem;
+  letter-spacing: -0.06em; /* Add this line to reduce spacing between letters */
 }
 
 a {
