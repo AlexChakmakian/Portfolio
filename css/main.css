@@ -1,3 +1,6 @@
+/* Adding Google Fonts for cross-platform consistency */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;700&family=Alfa+Slab+One&display=swap');
+
 :root {
   --accent-color: #67a1ff;
   --back-color: #181a1b;
@@ -10,7 +13,7 @@ html {
 
 body {
   background-color: white;
-  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
   color: white;
   font-size: 1rem;
   line-height: 1.25;
@@ -42,7 +45,7 @@ body {
   position: fixed;
   right: 3rem;
   bottom: 3rem;
-  background-color: rgb(77, 135, 230, 0.85); /* Making the background semi-transparent */
+  background-color: rgba(77, 135, 230, 0.85); /* Making the background semi-transparent */
   border-radius: 1.5rem;
   width: 1.5rem;
   height: 1.5rem;
@@ -90,11 +93,11 @@ span {
 
 .myname {
   font-size: clamp(5vw, 6rem);
-  font-family: 'Boldonse', 'Arial Black', Helvetica, sans-serif;
-  font-weight: 100; /* Medium */
+  font-family: 'Montserrat', 'Arial Black', Helvetica, sans-serif;
+  font-weight: 800; /* Bold weight for consistency */
   margin: 0;
   margin-bottom: 1.5rem;
-  letter-spacing: -0.06em; /* Add this line to reduce spacing between letters */
+  letter-spacing: -0.06em; /* Reduced spacing between letters */
 }
 
 a {
@@ -255,9 +258,6 @@ button {
   border: 0.25rem var(--accent-color) solid;
   border-radius: 0.25rem;
   padding: 1rem;
-}
-
-button {
   transition: all ease-in-out 0.35s;
 }
 
@@ -292,10 +292,20 @@ footer {
   .topArrow {
     display: none !important;
   }
+  
+  /* Ensure consistent fonts on mobile */
+  .myname {
+    font-family: 'Montserrat', 'Arial Black', sans-serif;
+    font-weight: 800;
+  }
+  
+  .portfolioTitle {
+    font-family: 'Alfa Slab One', cursive;
+    font-weight: normal;
+  }
 }
 
 /* LAPTOP VIEW */
-
 @media screen and (min-width: 1025px) {
   body {
     font-size: 2.4rem;
@@ -370,4 +380,13 @@ footer {
 
 /* LARGE DESKTOP VIEW */
 @media screen and (min-width: 1600px) {
+  /* Add any large desktop specific styles here */
+  .myname {
+    font-size: 7rem;
+  }
+  
+  .myDescription {
+    width: 35%;
+    font-size: 2.2rem;
+  }
 }
