@@ -76,7 +76,10 @@ button:hover {
 
 .header h1 {
     display: inline-block;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
+    font-family: 'Montserrat', 'Arial Black', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.04em;
     font-size: 1.75rem;
     background: linear-gradient(45deg, #67a1ff, #ffffff);
     -webkit-background-clip: text;

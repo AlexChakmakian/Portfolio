@@ -1,5 +1,18 @@
 /* MOBILE VIEW */
 
+/* Add heading style to match other sections */
+.education h2, 
+.achievements h2 {
+  font-family: 'Montserrat', 'Arial Black', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  color: #000000;
+}
+
 .education {
   width: 90%;
   margin: auto;
@@ -17,7 +30,7 @@
 }
 
 .educationInfo {
-  text-align: left;
+  text-align: center;
   margin-top: 0;
   width: 95%;
   list-style-type: disc;
@@ -25,14 +38,17 @@
 
 .accomplishmentTitle{
   font-weight: 700;
+  font-family: 'Inter', sans-serif;
 }
 
 .accomplishmentTagline{
   font-style: italic;
+  font-family: 'Inter', sans-serif;
 }
 
 .educationInfo p {
   line-height: 1.25;
+  font-family: 'Inter', sans-serif;
 }
 
 .educationInfo li {
@@ -41,6 +57,7 @@
   list-style-position: outside;
   margin-left: 2rem;
   line-height: 3rem;
+  font-family: 'Inter', sans-serif;
 }
 
 .schoolPic {
@@ -55,9 +72,30 @@
   width: 27%;
 }
 
+/* Add specific font styling for mobile */
+@media screen and (max-width: 768px) {
+  .education h2, 
+  .achievements h2 {
+    font-family: 'Montserrat', 'Arial Black', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+  }
+}
+
 /* LAPTOP VIEW */
 
 @media screen and (min-width: 1025px) {
+  /* Update font styling for laptop view */
+  .education h2, 
+  .achievements h2 {
+    font-family: 'Montserrat', 'Arial Black', sans-serif;
+    font-weight: 800;
+    font-size: 3.2rem;
+    letter-spacing: -0.04em;
+    text-align: center;
+  }
+  
   #experienceCard {
     flex-direction: row;
     width: 60%;
@@ -126,12 +164,6 @@
   .schoolPic {
     margin-right: 3rem;
     margin-left: 3rem;
-  }
-  #pennymac-image {
-    width: clamp(20rem, 3vw, 25rem);
-    height: auto;
-    margin: auto;
-    margin: 4rem;
   }
 
   #csun-exp-img {

@@ -177,7 +177,12 @@ li {
 }
 
 .contactMe h2 {
+  font-family: 'Montserrat', 'Arial Black', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  font-size: clamp(2.5rem, 4vw, 4rem);
   margin-bottom: 3rem;
+  color: #000000;
 }
 
 .contactCards {
@@ -303,6 +308,12 @@ footer {
     font-family: 'Alfa Slab One', cursive;
     font-weight: normal;
   }
+  .contactMe h2 {
+    font-family: 'Montserrat', 'Arial Black', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+  }
 }
 
 /* LAPTOP VIEW */
@@ -376,6 +387,12 @@ footer {
   form {
     width: 35%;
   }
+  .contactMe h2 {
+    font-family: 'Montserrat', 'Arial Black', sans-serif;
+    font-weight: 800;
+    font-size: 3.2rem;
+    letter-spacing: -0.04em;
+  }
 }
 
 /* LARGE DESKTOP VIEW */
@@ -384,6 +401,7 @@ footer {
   .myname {
     font-size: 7rem;
   }
+  
   
   .myDescription {
     width: 35%;

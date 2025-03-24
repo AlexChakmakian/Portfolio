@@ -12,6 +12,11 @@
 
 .mySkillsHeading {
   margin-top: 10vh;
+  /* Add only the font properties without changing any layout properties */
+  font-family: 'Montserrat', 'Arial Black', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #ffffff;
 }
 
 .skillsIcons {
@@ -43,6 +48,7 @@
   font-size: 1.5rem;
   margin-top: 1rem;
   color: rgb(255, 255, 255);
+  font-family: 'Inter', sans-serif;
 }
 
 /* LAPTOP VIEW */
@@ -51,6 +57,14 @@
   .skillsSection {
     clip-path: polygon(100% 0%, 0% 10%, 0% 100%, 100% 90%);
   }
+  
+  /* Only add font properties in the media query without changing layout */
+  .mySkillsHeading {
+    font-family: 'Montserrat', 'Arial Black', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+  
   .skillsIcons li {
     padding: 3rem;
   }

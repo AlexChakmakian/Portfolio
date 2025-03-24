@@ -1,9 +1,34 @@
 /* MOBILE VIEW */
 .portfolioTitle {
-  font-size: clamp(2rem, 3vw, 3.5rem);
+  font-family: 'Montserrat', 'Arial Black', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.04em; /* Slightly less tight spacing than your name */
+  font-size: clamp(2.5rem, 4vw, 4rem); /* Increased from 2rem/3vw/3.5rem */
   margin-top: 5rem;
   margin-bottom: 5rem;
   text-align: center;
+  color: #000000;
+}
+
+/* Add this to ensure consistency on mobile */
+@media screen and (max-width: 768px) {
+  .portfolioTitle {
+    font-family: 'Montserrat', 'Arial Black', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    font-size: clamp(2.5rem, 5vw, 3.5rem); /* Ensure good size on mobile */
+  }
+}
+
+/* Update the laptop view to be consistent */
+@media screen and (min-width: 1025px) {
+  .portfolioTitle {
+    font-family: 'Montserrat', 'Arial Black', sans-serif;
+    font-weight: 800;
+    font-size: 3.5rem;
+    letter-spacing: -0.04em;
+    text-align: left;
+  }
 }
 
 .project {

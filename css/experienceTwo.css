@@ -13,6 +13,11 @@
 .experienceTwo .mySkillsHeading {
   margin-top: 8vh; /* reduce for heading space */
   margin-bottom: 0; /* Ensure no bottom margin */
+  font-family: 'Montserrat', 'Arial Black', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  color: #ffffff;
 }
 
 .experienceTwo .skillsIcons {
@@ -47,29 +52,49 @@
   color: white;
   text-align: center;
   width: 100%;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Add mobile-specific styles */
+@media screen and (max-width: 768px) {
+  .experienceTwo .mySkillsHeading {
+    font-family: 'Montserrat', 'Arial Black', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+  }
 }
 
 /* LAPTOP VIEW */
-
 @media screen and (min-width: 1025px) {
   .experienceTwo {
     clip-path: polygon(100% 0%, 0% 10%, 0% 100%, 100% 90%);
   }
+  
+  .experienceTwo .mySkillsHeading {
+    font-family: 'Montserrat', 'Arial Black', sans-serif;
+    font-weight: 800;
+    font-size: 3.2rem;
+    letter-spacing: -0.04em;
+  }
+  
   .experienceTwo .skillsIcons {
     padding: 2rem 0 8rem 0; /* Reduced top padding from 8rem to 2rem */
   }
+  
   .experienceTwo .skillsIcons li {
     width: 200px;
   }
+  
   .experienceTwo .skillsIcons li:hover {
     transform: scale(1.35);
   }
-/* Add this to your experienceTwo.css file */
-.experienceTwo .iconifySkills {
-  display: block;
-  width: 100px;
-  height: 100px; /* Force consistent height */
-  object-fit: contain; /* Preserve aspect ratio */
-  margin: 0 auto 1rem auto;
-}
+  
+  .experienceTwo .iconifySkills {
+    display: block;
+    width: 100px;
+    height: 100px; /* Force consistent height */
+    object-fit: contain; /* Preserve aspect ratio */
+    margin: 0 auto 1rem auto;
+  }
 }
