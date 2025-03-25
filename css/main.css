@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;700&family=Alfa+Slab+One&display=swap');
 
 :root {
-  --accent-color: #67a1ff;
+  --accent-color: #80b1ff;
   --back-color: #181a1b;
 }
 
@@ -26,10 +26,6 @@ body {
   width: 100%;
   box-sizing: border-box;
   z-index: 1;
-}
-
-#amazon{
-  color: #fca21b;
 }
 
 /* MOBILE VIEW */
