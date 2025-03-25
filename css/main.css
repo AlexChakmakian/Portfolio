@@ -47,8 +47,8 @@ body {
   bottom: 3rem;
   background-color: rgba(77, 135, 230, 0.85); /* Making the background semi-transparent */
   border-radius: 1.5rem;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 3.75rem; /* Adjusted width */
+  height: 3.75rem; /* Adjusted height */
   z-index: 999; /* Higher z-index */
   display: flex;
   justify-content: center;
@@ -58,10 +58,10 @@ body {
 }
 
 .topArrow .iconify {
-  font-size: 2rem !important; /* Base size */
+  font-size: 2.50rem !important; /* Base size */
   color: #fff;
   transform-origin: center;
-  transform: scale(3.5) !important; /* Add !important */
+  transform: scale(1.5) !important; /* Adjusted scale */
 }
 
 li .fa-brands {
@@ -267,19 +267,20 @@ button {
 }
 
 footer {
-  color: #21262d;
+  color: rgb(158, 158, 158);
 }
 
 .footerLinks {
-  height: 8vh;
+  height: 4.75vh; /* Reduced height */
   background-color: #21262d;
   display: flex;
-  align-items: flex-end;
+  align-items: center; /* Center items vertically */
   justify-content: center;
+  padding: 0.5rem 0; /* Add some padding */
 }
 
 .footerLinks > a {
-  padding: 2rem;
+  padding: 1rem; /* Reduced padding */
   transition: all 0.2s ease-in-out;
 }
 
@@ -289,7 +290,17 @@ footer {
 }
 
 .footerLinks .iconify {
-  font-size: 2.5rem;
+  font-size: 1.6rem; /* Reduced icon size */
+}
+
+/* Add copyright style with smaller text size */
+.copyright {
+  font-size: 1.2rem; /* Smaller text size */
+  color: rgb(158, 158, 158); /* Same color as footer */
+  margin: 0;
+  padding-top: 8px; /* Add padding to the top */
+  padding-left: 3rem;
+  align-self: center; /* Center vertically */
 }
 
 /* MOBILE VIEW SPECIFIC - HIDE BACK TO TOP ARROW */
@@ -303,6 +314,7 @@ footer {
     font-family: 'Montserrat', 'Arial Black', sans-serif;
     font-weight: 800;
   }
+}
   
   .portfolioTitle {
     font-family: 'Alfa Slab One', cursive;
@@ -314,7 +326,7 @@ footer {
     letter-spacing: -0.04em;
     font-size: clamp(2.5rem, 5vw, 3.5rem);
   }
-}
+
 
 /* LAPTOP VIEW */
 @media screen and (min-width: 1025px) {
