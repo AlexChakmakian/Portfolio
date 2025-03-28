@@ -140,6 +140,7 @@ button:hover {
     width: 100%;
     display: flex;
     justify-content: center;
+    box-shadow: 0 0 15px 5px rgba(103, 161, 255, 0.50); /* Add a glowing effect */
 }
 
 .back-button {
