@@ -76,6 +76,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script> <!-- Confetti library -->
 
     <script>
         // Initialize the board and game
@@ -84,11 +85,16 @@
         let engineThinking = false;
         let myOpeningBook = {};
         let moveSound;
+        let victorySound;
 
         // Initialize sound
         function initSound() {
             moveSound = new Audio('https://lichess1.org/assets/sound/standard/Move.mp3');
             moveSound.volume = 0.2;
+            
+            // Add victory sound
+            victorySound = new Audio('https://cdn.freesound.org/previews/411/411089_5121236-lq.mp3');
+            victorySound.volume = 0.4;
             
             // Enable audio on first user interaction (required for mobile)
             document.addEventListener('click', enableAudio, { once: true });
@@ -513,7 +519,14 @@
 
             // Checkmate?
             if (game.in_checkmate()) {
-                status = playerCheck + ' in checkmate!♜😵';
+                if (!isMyTurn) {
+                    // Player (white) has checkmated the AI (black)
+                    status = 'You won by checkmate!♜🎉';
+                    // Celebrate victory with confetti and sound
+                    setTimeout(celebrateVictory, 500);
+                } else {
+                    status = 'I checkmated you!♜😵';
+                }
             }
             // Draw?
             else if (game.in_draw()) {
@@ -529,6 +542,52 @@
             }
 
             document.getElementById('status').innerHTML = status;
+        }
+
+        function celebrateVictory() {
+            // Play victory sound
+            victorySound.play().catch(e => {
+                console.log('Could not play victory sound:', e);
+            });
+            
+            // Launch confetti from multiple points
+            const duration = 3000;
+            const animationEnd = Date.now() + duration;
+            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+            
+            // Use multiple confetti bursts for a more exciting effect
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+            
+            // Create an interval that triggers confetti
+            const interval = setInterval(function() {
+                const timeLeft = animationEnd - Date.now();
+                
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+                
+                const particleCount = 50 * (timeLeft / duration);
+                
+                // Launch confetti from both sides and the top
+                confetti(Object.assign({}, defaults, { 
+                    particleCount,
+                    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+                }));
+                
+                confetti(Object.assign({}, defaults, { 
+                    particleCount,
+                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+                }));
+            }, 250);
+            
+            // Add one big burst in the middle
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
         }
 
         function makeComputerMove() {
