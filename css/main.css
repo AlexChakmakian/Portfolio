@@ -505,22 +505,4 @@ footer {
   justify-content: center;
   align-items: center;
 }
-
-/* Make experience logos smaller on mobile only */
-@media screen and (max-width: 768px) {
-  /* Target the experience section logos */
-  .experienceTwo .skillsIcons .iconifySkills,
-  .experienceTwo .skillsIcons img.iconifySkills {
-    width: 75%; /* Make them 20% smaller */
-    height: auto;
-    font-size: 75%; /* For icon fonts */
-    transform: scale(0.75); /* Additional scaling if needed */
-  }
-  
-  /* Adjust container spacing if needed */
-  .experienceTwo .skillsIcons li {
-    margin: 0.5rem;
-  }
-}
-
 /* MOBILE ONLYYY ^^^^ */
