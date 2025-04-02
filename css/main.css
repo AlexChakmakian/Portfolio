@@ -416,3 +416,92 @@ footer {
     font-size: 2.2rem;
   }
 }
+
+/* MOBILE VIEW - Center project elements */
+@media screen and (max-width: 768px) {
+  /* Center project articles */
+  .project {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto 3rem auto;
+    width: 90%;
+  }
+  
+  /* Center project details */
+  .projectDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  /* Center project titles */
+  .projectDetails h3 {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Center tools used text */
+  .toolsUsed {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+  
+  /* Center project description */
+  .projectDetails p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+  
+  /* Button container */
+  .projectDetails a {
+    display: inline-block;
+    margin: 0.5rem;
+  }
+  
+  /* Center video elements */
+  .videoplayers, 
+  .video-container,
+  .image_box,
+  #mp3Image {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /* Style buttons to be centered */
+  .codeButton, 
+  .demoButton, 
+  .figmaButton {
+    margin: 0.5rem;
+  }
+  
+  /* Increase tap target size for buttons on mobile */
+  button {
+    min-width: 120px;
+    min-height: 44px;
+  }
+  
+  /* Make My Projects heading centered */
+  .portfolioTitle {
+    text-align: center !important;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Ensure project videos are centered properly on all screens */
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
