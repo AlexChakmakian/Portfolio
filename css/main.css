@@ -419,6 +419,7 @@ footer {
 
 /* MOBILE VIEW - Center project elements \/\/\/ */
 @media screen and (max-width: 768px) {
+  
   /* Center project articles */
   .project {
     display: flex;
@@ -497,17 +498,15 @@ footer {
     text-align: center !important;
     margin-bottom: 2rem;
   }
-}
-
-/* Ensure project videos are centered properly on all screens */
+  .portfolioTitle {
+    margin-bottom: 1rem !important; /* Reduced from 2rem */
+  }
+  /* Ensure project videos are centered properly on all screens */
 .video-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
- 
-/* Reduce space between Projects title and first project */
-.portfolioTitle {
-  margin-bottom: 1rem !important; /* Reduced from 2rem */
 }
-/* MOBILE ONLYYY ^^^^ */
+
+/* MOBILE ONLYYY ^^^^ *//* Reduce space between Projects title and first project */
