@@ -6,6 +6,8 @@
     <title>Alex's Chess Bot</title>
     <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
     <link rel="stylesheet" href="../css/chess-styles.css">
+    <link rel="stylesheet" href="leaderboard-styles.css">   
+     
     <!-- Add iconify for social media icons -->
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 </head>
@@ -34,10 +36,16 @@
         </ul>
     </nav>
 
-    <div class="header">
-        <h1>Alex's Chess Bot♟️</h1>
-        <p>Can you beat me at chess? Good luck!</p>
-    </div>
+<!-- In chess/index.html file -->
+<div class="header">
+    <h1>
+        Alex's Chess Bot♟️
+        <span class="leaderboard-icon" id="leaderboardBtn" title="View Leaderboard">
+            <span class="iconify" data-icon="material-symbols:leaderboard"></span>
+        </span>
+    </h1>
+    <p>Can you beat me at chess? Good luck!</p>
+</div>
 
     <!-- Status text now appears above the board -->
     <div class="status" id="status">Make your move</div>
@@ -72,6 +80,13 @@
       <p class="copyright">© 2025 Alexander Chakmakian</p>
     </footer>
 
+    <!-- Simplified leaderboard modal that will be populated by AJAX -->
+    <div id="leaderboardModal" class="modal">
+        <div class="modal-content" id="leaderboardContent">
+            <!-- Content will be loaded here -->
+        </div>
+    </div>
+
     <!-- Load JavaScript libraries -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
@@ -99,6 +114,148 @@
             // Enable audio on first user interaction (required for mobile)
             document.addEventListener('click', enableAudio, { once: true });
             document.addEventListener('touchstart', enableAudio, { once: true });
+        }
+
+        // Leaderboard Functions
+        function setupLeaderboardModal() {
+            const modal = document.getElementById('leaderboardModal');
+            const btn = document.getElementById('leaderboardBtn');
+            
+            // Only set up once
+            if (window.leaderboardInitialized) return;
+            window.leaderboardInitialized = true;
+            
+            // Load leaderboard content when icon is clicked
+            btn.onclick = function() {
+                // Show modal immediately with loading indicator
+                modal.style.display = "block";
+                
+                // Load content from separate file
+                $('#leaderboardContent').html('<div style="text-align:center;padding:30px;">Loading leaderboard...</div>');
+                
+                // Use jQuery AJAX to load the content
+                $.ajax({
+                    url: 'leaderboard-content.html',
+                    success: function(data) {
+                        $('#leaderboardContent').html(data);
+                        
+                        // Set up close button event after content is loaded
+                        $('.close-modal').on('click', function() {
+                            modal.style.display = "none";
+                        });
+                        
+                        // Update leaderboard data
+                        loadLeaderboardData();
+                    },
+                    error: function() {
+                        $('#leaderboardContent').html('<div style="text-align:center;padding:30px;color:red;">Error loading leaderboard</div>');
+                    }
+                });
+            }
+            
+            // Close when clicking outside the modal
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+
+        function loadLeaderboardData() {
+            // For now, we're using the sample data in the HTML
+            // In the future, this function would fetch data from your server/database
+            
+            // You could implement a simple localStorage-based system for testing:
+            const savedLeaderboard = localStorage.getItem('chessLeaderboard');
+            if (savedLeaderboard) {
+                const leaderboard = JSON.parse(savedLeaderboard);
+                const tbody = document.getElementById('leaderboard-data');
+                if (!tbody) return; // Safety check
+                
+                tbody.innerHTML = ''; // Clear existing rows
+                
+                leaderboard.forEach((player, index) => {
+                    const rankClass = index < 3 ? `rank-${index+1}` : '';
+                    const row = document.createElement('tr');
+                    row.className = rankClass;
+                    row.innerHTML = `
+                        <td><div class="rank-badge">${index + 1}</div></td>
+                        <td>${player.name}</td>
+                        <td>${player.date}</td>
+                        <td>${player.moves}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            }
+        }
+
+        function recordVictory() {
+            // Get player name
+            const playerName = prompt("Congratulations on beating the bot! Enter your name for the leaderboard:", "");
+            
+            if (playerName) {
+                // Get current date
+                const today = new Date();
+                const date = today.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                
+                // Record number of moves
+                const moves = Math.ceil(game.history().length / 2);
+                
+                // Create leaderboard entry
+                const entry = {
+                    name: playerName,
+                    date: date,
+                    moves: moves
+                };
+                
+                // Save to leaderboard
+                saveToLeaderboard(entry);
+            }
+        }
+
+        function saveToLeaderboard(entry) {
+            // Get existing leaderboard or create new one
+            let leaderboard = JSON.parse(localStorage.getItem('chessLeaderboard') || '[]');
+            
+            // Add new entry
+            leaderboard.push(entry);
+            
+            // Sort by moves (fewer moves is better)
+            leaderboard.sort((a, b) => a.moves - b.moves);
+            
+            // Keep only top 10
+            leaderboard = leaderboard.slice(0, 10);
+            
+            // Save back to localStorage
+            localStorage.setItem('chessLeaderboard', JSON.stringify(leaderboard));
+            
+            // Show leaderboard after short delay
+            setTimeout(() => {
+                document.getElementById('leaderboardModal').style.display = "block";
+                
+                // Load the leaderboard content if not already loaded
+                if (!$('#leaderboardContent').children().length) {
+                    $.ajax({
+                        url: 'leaderboard-content.html',
+                        success: function(data) {
+                            $('#leaderboardContent').html(data);
+                            // Set up close button
+                            $('.close-modal').on('click', function() {
+                                document.getElementById('leaderboardModal').style.display = "none";
+                            });
+                            // Load the updated data
+                            loadLeaderboardData();
+                        }
+                    });
+                } else {
+                    // Just update the data if content is already loaded
+                    loadLeaderboardData();
+                }
+            }, 1000);
         }
 
         // Function to enable audio system
@@ -524,6 +681,8 @@
                     status = 'You won by checkmate!♜🎉';
                     // Celebrate victory with confetti and sound
                     setTimeout(celebrateVictory, 500);
+                    // Record victory in leaderboard
+                    setTimeout(recordVictory, 1500);
                 } else {
                     status = 'I checkmated you!♜😵';
                 }
@@ -619,6 +778,9 @@
             
             // Load the personal opening book
             loadPersonalOpeningBook();
+            
+            // Set up the leaderboard modal
+            setupLeaderboardModal();
             
             if ($('#myBoard').length) {
                 const config = {
