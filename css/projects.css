@@ -51,6 +51,9 @@
 .project_image {
   width: 100%;
   border-radius: 0.3rem;
+  /* Add glow effect */
+  border: 1px solid #80b1ff;
+  box-shadow: 0 0 8px 2px rgba(128, 177, 255, 0.4);
 }
 
 .toolsUsed {
@@ -61,14 +64,41 @@
 .videoplayers {
   display: inline;
   margin: auto;
-  border-radius: 0.5rem;
-  border: 0.3rem #dcdcdc solid;
+  border-radius: 1.75rem;
+  /* Replace default border with glowing accent border */
+  border: 2px solid #80b1ff;
+  box-shadow: 0 0 8px 2px rgba(128, 177, 255, 0.45);
   width: 80%;
 }
 
 .image_box {
   margin: auto;
   width: 60%;
+  /* Add glow effect */
+  border: 1px solid #80b1ff;
+  box-shadow: 0 0 8px 2px rgba(128, 177, 255, 0.4);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+/* Hover glow effect */
+.codeButton,
+.demoButton,
+.figmaButton {
+  transition: all 0.3s ease;
+}
+
+.codeButton:hover,
+.figmaButton:hover {
+  box-shadow: 0 0 10px 3px rgba(128, 177, 255, 0.5);
+  transform: translateY(-2px);
+  border-color: var(--accent-color);
+}
+
+.demoButton:hover {
+  background-color: rgb(108, 181, 254);
+  border-color: rgb(1, 130, 228);
+  box-shadow: 0 0 10px 3px rgba(1, 130, 228, 0.5);
+  transform: translateY(-2px);
 }
 
 .codeButton {
@@ -98,6 +128,11 @@
 #mp3Image {
   width: 80%;
   margin: auto;
+  /* Add glow effect */
+  border: 1px solid #80b1ff;
+  box-shadow: 0 0 8px 2px rgba(128, 177, 255, 0.4);
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
 
 /* LAPTOP VIEW */

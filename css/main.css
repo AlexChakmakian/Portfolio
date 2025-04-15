@@ -85,6 +85,22 @@ span {
   text-align: center;
   background-color: var(--back-color);
   color: white;
+  /* Add neon border effect at bottom */
+  border-bottom: 2px solid var(--accent-color);
+  box-shadow: 0 4px 8px -2px rgba(128, 177, 255, 0.6);
+  position: relative;
+}
+
+/* Add glow effect that extends into the white area */
+.topBack:after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background: linear-gradient(to bottom, rgba(128, 177, 255, 0.4), transparent);
+  pointer-events: none;
 }
 
 .myname {
@@ -322,7 +338,6 @@ footer {
     letter-spacing: -0.04em;
     font-size: clamp(2.5rem, 5vw, 3.5rem);
   }
-
 
 /* LAPTOP VIEW */
 @media screen and (min-width: 1025px) {
