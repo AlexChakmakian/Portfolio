@@ -31,6 +31,34 @@
   }
 }
 
+/* Add glow effect to project titles - text glow only, no box (reduced intensity) */
+.projectDetails h3 {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: #000;
+  font-weight: 700;
+  padding: 0;
+  border: none;
+  background: none;
+  box-shadow: none;
+  text-shadow:
+    0 0 1px #fff,
+    0 0 3px #80b1ff88,
+    0 0 8px #80b1ff55,
+    0 0 16px #80b1ff33,
+    0 0 32px #80b1ff22;
+}
+
+/* Mobile adjustments for project title glow */
+@media screen and (max-width: 768px) {
+  .projectDetails h3 {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+  }
+}
+
 .project {
   display: flex;
   flex-direction: column;
@@ -59,6 +87,13 @@
 .toolsUsed {
   color: rgb(135, 135, 135);
   margin: auto;
+  font-size: 1.60rem;
+}
+
+@media screen and (max-width: 768px) {
+  .toolsUsed {
+    font-size: 1.0rem;
+  }
 }
 
 .videoplayers {
