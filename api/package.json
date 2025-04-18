@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@azure/data-tables": "^14.2.0"
+  }
+}
