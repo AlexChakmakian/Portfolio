@@ -7,7 +7,7 @@
     "build:azure": "echo 'Static site, no build required'"
   },
   "staticWebApp": {
-    "outputLocation": ".",
+    "outputLocation": "/",
     "appBuildCommand": "echo 'Static site, no build required'",
     "apiBuildCommand": "cd api && npm install"
   }
