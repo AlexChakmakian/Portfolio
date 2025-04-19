@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "Alex Chakmakian Portfolio",
   "scripts": {
-    "build": "echo Building App",
-    "build:azure": "echo Building App for Azure"
+    "build": "echo 'Static site, no build required'",
+    "build:azure": "echo 'Static site, no build required'"
+  },
+  "staticWebApp": {
+    "outputLocation": ".",
+    "appBuildCommand": "echo 'Static site, no build required'",
+    "apiBuildCommand": "cd api && npm install"
   }
 }
