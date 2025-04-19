@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "build": "echo Building API",
+    "build:azure": "echo Building API for Azure"
+  },
   "dependencies": {
     "@azure/data-tables": "^13.3.0"
   }
