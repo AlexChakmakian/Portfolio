@@ -1,0 +1,38 @@
+{
+  "routes": [
+    {
+      "route": "/api/*",
+      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+      "allowedRoles": ["anonymous"]
+    },
+    {
+      "route": "/*",
+      "serve": "/index.html",
+      "statusCode": 200
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "index.html",
+    "exclude": ["/images/*.{png,jpg,gif,ico}", "/*.{css,scss,js}"]
+  },
+  "responseOverrides": {
+    "400": {
+      "rewrite": "/error.html",
+      "statusCode": 200
+    },
+    "404": {
+      "rewrite": "/index.html",
+      "statusCode": 200
+    }
+  },
+  "globalHeaders": {
+    "content-security-policy": "default-src 'self' 'unsafe-inline' 'unsafe-eval' https://polite-moss-079c74310.6.azurestaticapps.net https://*.azurestaticapps.net https://alexjacob.dev https://*.cloudflare.com https://*.googleapis.com https://*.gstatic.com https://*.freesound.org https://cdn.freesound.org https://*.jsdelivr.net https://*.chessboardjs.com;",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization"
+  },
+  "mimeTypes": {
+    ".json": "application/json",
+    ".pgn": "application/x-chess-pgn"
+  }
+}
