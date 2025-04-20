@@ -7,31 +7,26 @@ const tableName = "Players";
 module.exports = async function (context, req) {
     context.log("SavePlayer function triggered");
     
-    // Handle CORS preflight OPTIONS request
+    // Set CORS headers for all responses
+    const headers = {
+        "Access-Control-Allow-Origin": req.headers.origin || "*",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Content-Type": "application/json"
+    };
+    
+    // Handle OPTIONS request (CORS preflight)
     if (req.method === "OPTIONS") {
         context.res = {
             status: 204,
-            headers: {
-                "Access-Control-Allow-Origin": "https://alexjacob.dev",
-                "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-                "Access-Control-Allow-Headers": "Content-Type, Authorization",
-                "Access-Control-Max-Age": "86400"
-            },
+            headers: headers,
             body: ""
         };
         return;
     }
     
-    // Set CORS headers for the actual request
-    const headers = {
-        "Access-Control-Allow-Origin": "https://alexjacob.dev",
-        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization",
-        "Content-Type": "application/json"
-    };
-    
     try {
-        // Log information for debugging (visible in Azure Function logs)
+        // Log request details for debugging
         context.log("Request body:", JSON.stringify(req.body, null, 2));
         
         const { name, moves } = req.body;
@@ -60,6 +55,7 @@ module.exports = async function (context, req) {
         const credential = new AzureNamedKeyCredential(accountName, accountKey);
         const client = new TableClient(`https://${accountName}.table.core.windows.net`, tableName, credential);
 
+        // Create the entity to save
         const entity = {
             partitionKey: "Players",
             rowKey: Date.now().toString(),
@@ -71,10 +67,16 @@ module.exports = async function (context, req) {
         await client.createEntity(entity);
         context.log("Player saved successfully");
 
+        // Return success response
         context.res = {
             status: 200,
             headers: headers,
-            body: { message: "Player saved successfully!", name, moves }
+            body: { 
+                message: "Player saved successfully!", 
+                name, 
+                moves,
+                timestamp: entity.rowKey
+            }
         };
     } catch (error) {
         context.log.error(`Error saving player: ${error.message}`);
