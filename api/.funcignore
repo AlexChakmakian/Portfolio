@@ -1,0 +1,7 @@
+.git*
+.vscode
+local.settings.json
+*.local.json
+test
+test2
+node_modules 
