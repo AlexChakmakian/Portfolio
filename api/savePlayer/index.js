@@ -7,14 +7,18 @@ const tableName = "Players";
 module.exports = async function (context, req) {
     context.log("SavePlayer function triggered");
 
-    // Set CORS headers for all responses
+    const requestOrigin = req.headers.origin;
+    const allowedOrigin = requestOrigin === "https://alexjacob.dev" ? requestOrigin : "null";
+    
     const headers = {
-        "Access-Control-Allow-Origin": "https://alexjacob.dev",
+        "Access-Control-Allow-Origin": allowedOrigin,
         "Access-Control-Allow-Methods": "POST, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type, Authorization, Origin, Accept",
         "Access-Control-Allow-Credentials": "true",
+        "Vary": "Origin",
         "Content-Type": "application/json"
     };
+    
 
     // Handle OPTIONS request (CORS preflight)
     if (req.method === "OPTIONS") {
