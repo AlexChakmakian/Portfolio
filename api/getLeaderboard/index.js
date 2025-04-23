@@ -11,14 +11,15 @@ module.exports = async function (context, req) {
     const headers = {
         "Access-Control-Allow-Origin": "https://alexjacob.dev",
         "Access-Control-Allow-Methods": "GET, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization, Origin, Accept",
+        "Access-Control-Allow-Credentials": "true",
         "Content-Type": "application/json"
     };
 
     // Handle OPTIONS request (CORS preflight)
     if (req.method === "OPTIONS") {
         context.res = {
-            status: 204,
+            status: 200,
             headers: headers,
             body: ""
         };
