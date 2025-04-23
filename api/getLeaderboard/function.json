@@ -8,8 +8,7 @@
         "methods": [
           "get",
           "options"
-        ],
-        "route": "getLeaderboard"
+        ]
       },
       {
         "type": "http",

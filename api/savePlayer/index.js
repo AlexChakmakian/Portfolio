@@ -12,8 +12,8 @@ module.exports = async function (context, req) {
         context.res = {
             status: 204,
             headers: {
-                "Access-Control-Allow-Origin": "https://alexjacob.dev",
-                "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "POST, OPTIONS",
                 "Access-Control-Allow-Headers": "Content-Type, Authorization",
                 "Access-Control-Max-Age": "86400"
             },
@@ -24,8 +24,8 @@ module.exports = async function (context, req) {
     
     // Set CORS headers for the actual request
     const headers = {
-        "Access-Control-Allow-Origin": "https://alexjacob.dev",
-        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
         "Content-Type": "application/json"
     };

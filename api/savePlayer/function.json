@@ -8,8 +8,7 @@
         "methods": [
           "post",
           "options"
-        ],
-        "route": "savePlayer"
+        ]
       },
       {
         "type": "http",
