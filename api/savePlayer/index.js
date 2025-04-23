@@ -7,28 +7,23 @@ const tableName = "Players";
 module.exports = async function (context, req) {
     context.log("SavePlayer function triggered");
     
-    // Handle CORS preflight OPTIONS request
-    if (req.method === "OPTIONS") {
-        context.res = {
-            status: 204,
-            headers: {
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": "POST, OPTIONS",
-                "Access-Control-Allow-Headers": "Content-Type, Authorization",
-                "Access-Control-Max-Age": "86400"
-            },
-            body: ""
-        };
-        return;
-    }
-    
-    // Set CORS headers for the actual request
+    // Set CORS headers for all responses
     const headers = {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://alexjacob.dev",
         "Access-Control-Allow-Methods": "POST, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
         "Content-Type": "application/json"
     };
+
+    // Handle OPTIONS request (CORS preflight)
+    if (req.method === "OPTIONS") {
+        context.res = {
+            status: 204,
+            headers: headers,
+            body: ""
+        };
+        return;
+    }
     
     try {
         // Log information for debugging (visible in Azure Function logs)
