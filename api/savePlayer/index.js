@@ -4,33 +4,31 @@ const accountName = process.env.STORAGE_ACCOUNT_NAME;
 const accountKey = process.env.STORAGE_ACCOUNT_KEY;
 const tableName = "Players";
 
-// Define CORS headers
-const corsHeaders = {
-    "Access-Control-Allow-Origin": "https://alexjacob.dev",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type, Authorization, Origin, Accept, X-Requested-With",
-    "Access-Control-Allow-Credentials": "true",
-    "Vary": "Origin",
-    "Content-Type": "application/json"
-};
-
 module.exports = async function (context, req) {
     context.log("SavePlayer function triggered");
-    context.log("Request method:", req.method);
-    context.log("Request headers:", JSON.stringify(req.headers, null, 2));
-    
+
+    // Set CORS headers for all responses
+    const headers = {
+        "Access-Control-Allow-Origin": "https://alexjacob.dev",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization, Origin, Accept",
+        "Access-Control-Allow-Credentials": "true",
+        "Content-Type": "application/json"
+    };
+
     // Handle OPTIONS request (CORS preflight)
     if (req.method === "OPTIONS") {
         context.log("Handling OPTIONS request");
         context.res = {
-            status: 200, // Changed from 204 to 200
-            headers: corsHeaders,
+            status: 200,
+            headers: headers,
             body: ""
         };
         return;
     }
-    
+
     try {
+        // Log information for debugging (visible in Azure Function logs)
         context.log("Request body:", JSON.stringify(req.body, null, 2));
         
         const { name, moves } = req.body;
@@ -39,18 +37,17 @@ module.exports = async function (context, req) {
             context.log.error("Missing required fields: name or moves");
             context.res = {
                 status: 400,
-                headers: corsHeaders,
+                headers: headers,
                 body: { error: "Missing required fields: name or moves" }
             };
             return;
         }
 
-        // Verify environment variables are set
         if (!accountName || !accountKey) {
             context.log.error("Missing storage account credentials. Please check environment variables.");
             context.res = {
                 status: 500,
-                headers: corsHeaders,
+                headers: headers,
                 body: { error: "Server configuration error: Missing storage credentials" }
             };
             return;
@@ -72,14 +69,14 @@ module.exports = async function (context, req) {
 
         context.res = {
             status: 200,
-            headers: corsHeaders,
+            headers: headers,
             body: { message: "Player saved successfully!", name, moves }
         };
     } catch (error) {
         context.log.error(`Error saving player: ${error.message}`);
         context.res = {
             status: 500,
-            headers: corsHeaders,
+            headers: headers,
             body: { 
                 error: "Failed to save player data",
                 details: error.message,
