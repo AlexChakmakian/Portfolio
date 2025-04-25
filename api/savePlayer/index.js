@@ -6,6 +6,8 @@ const tableName = "Players";
 
 module.exports = async function (context, req) {
     context.log("SavePlayer function triggered");
+    context.log("Storage Account Name:", accountName);
+    context.log("Table Name:", tableName);
 
     const requestOrigin = req.headers.origin;
     const allowedOrigin = requestOrigin === "https://alexjacob.dev" ? requestOrigin : "null";
@@ -48,13 +50,10 @@ module.exports = async function (context, req) {
         }
 
         if (!accountName || !accountKey) {
-            context.log.error("Missing storage account credentials. Please check environment variables.");
-            context.res = {
-                status: 500,
-                headers: headers,
-                body: { error: "Server configuration error: Missing storage credentials" }
-            };
-            return;
+            context.log.error("Missing storage account credentials");
+            context.log("Account Name:", accountName ? "Present" : "Missing");
+            context.log("Account Key:", accountKey ? "Present" : "Missing");
+            throw new Error("Storage account credentials not configured");
         }
 
         context.log("Creating TableClient with credentials");
@@ -78,14 +77,17 @@ module.exports = async function (context, req) {
             body: { message: "Player saved successfully!", name, moves }
         };
     } catch (error) {
-        context.log.error(`Error saving player: ${error.message}`);
+        context.log.error("Error in savePlayer function:", error);
+        context.log.error("Error details:", error.message);
+        context.log.error("Error stack:", error.stack);
+        
         context.res = {
             status: 500,
             headers: headers,
-            body: { 
+            body: {
                 error: "Failed to save player data",
                 details: error.message,
-                storageAccount: accountName ? `${accountName} (configured)` : "Not configured"
+                stack: error.stack
             }
         };
     }
