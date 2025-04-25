@@ -6,28 +6,27 @@ const tableName = "Players";
 
 module.exports = async function (context, req) {
     context.log("GetLeaderboard function triggered");
-    context.log("Request method:", req.method);
-    context.log("Request headers:", JSON.stringify(req.headers, null, 2));
+    context.log("Storage Account Name:", accountName);
+    context.log("Table Name:", tableName);
 
-    // Dynamically set CORS based on request origin
     const requestOrigin = req.headers.origin;
     const allowedOrigin = requestOrigin === "https://alexjacob.dev" ? requestOrigin : "null";
 
     const headers = {
         "Access-Control-Allow-Origin": allowedOrigin,
         "Access-Control-Allow-Methods": "GET, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization, Origin, Accept, X-Requested-With",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization, Origin, Accept",
         "Access-Control-Allow-Credentials": "true",
         "Vary": "Origin",
         "Content-Type": "application/json"
     };
 
-    // Handle OPTIONS preflight request
+    // Handle preflight CORS
     if (req.method === "OPTIONS") {
         context.log("Handling OPTIONS request");
         context.res = {
             status: 204,
-            headers: headers,
+            headers,
             body: ""
         };
         return;
@@ -35,18 +34,17 @@ module.exports = async function (context, req) {
 
     try {
         if (!accountName || !accountKey) {
-            context.log.error("Missing storage account credentials. Please check environment variables.");
-            context.res = {
-                status: 500,
-                headers: headers,
-                body: { error: "Server configuration error: Missing storage credentials" }
-            };
-            return;
+            context.log.error("Missing storage account credentials");
+            context.log("Account Name:", accountName ? "Present" : "Missing");
+            context.log("Account Key:", accountKey ? "Present" : "Missing");
+            throw new Error("Storage account credentials not configured");
         }
 
+        context.log("Creating TableClient with credentials");
         const credential = new AzureNamedKeyCredential(accountName, accountKey);
-        const client = new TableClient(`https://${accountName}.table.core.windows.net`, tableName, credential);
+        const client = new TableClient("https://chessleaderboard.table.core.windows.net", tableName, credential);
 
+        context.log("Attempting to list entities");
         const entities = [];
         for await (const entity of client.listEntities()) {
             entities.push({
@@ -57,25 +55,28 @@ module.exports = async function (context, req) {
             });
         }
 
-        // Sort by most recent
-        entities.sort((a, b) => parseInt(b.timestamp) - parseInt(a.timestamp));
+        context.log(`Retrieved ${entities.length} entities from table`);
 
-        context.log(`Retrieved ${entities.length} players from the leaderboard`);
+        // Sort by most recent first
+        entities.sort((a, b) => parseInt(b.timestamp) - parseInt(a.timestamp));
 
         context.res = {
             status: 200,
-            headers: headers,
+            headers,
             body: entities
         };
     } catch (error) {
-        context.log.error(`Error retrieving leaderboard: ${error.message}`);
+        context.log.error("Error in getLeaderboard function:", error);
+        context.log.error("Error details:", error.message);
+        context.log.error("Error stack:", error.stack);
+        
         context.res = {
             status: 500,
-            headers: headers,
+            headers,
             body: {
                 error: "Failed to retrieve leaderboard data",
                 details: error.message,
-                storageAccount: accountName ? `${accountName} (configured)` : "Not configured"
+                stack: error.stack
             }
         };
     }

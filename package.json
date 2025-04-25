@@ -10,5 +10,20 @@
     "outputLocation": "/",
     "appBuildCommand": "echo 'Static site, no build required'",
     "apiBuildCommand": "cd api && npm install"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexChakmakian/Portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexChakmakian/Portfolio/issues"
+  },
+  "homepage": "https://github.com/AlexChakmakian/Portfolio#readme",
+  "dependencies": {
+    "@azure/data-tables": "^13.3.0"
   }
 }

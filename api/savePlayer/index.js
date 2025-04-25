@@ -57,8 +57,9 @@ module.exports = async function (context, req) {
             return;
         }
 
+        context.log("Creating TableClient with credentials");
         const credential = new AzureNamedKeyCredential(accountName, accountKey);
-        const client = new TableClient(`https://${accountName}.table.core.windows.net`, tableName, credential);
+        const client = new TableClient("https://chessleaderboard.table.core.windows.net", tableName, credential);
 
         const entity = {
             partitionKey: "Players",
