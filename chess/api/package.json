@@ -1,0 +1,12 @@
+{
+  "name": "chess-leaderboard-api",
+  "version": "1.0.0",
+  "description": "API functions for the chess leaderboard",
+  "scripts": {
+    "build": "echo Building API",
+    "build:azure": "echo Building API for Azure"
+  },
+  "dependencies": {
+    "@azure/data-tables": "^13.3.0"
+  }
+}

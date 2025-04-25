@@ -1,4 +1,4 @@
-/* Modal styles */
+/* Leaderboard Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -8,215 +8,207 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
-    overflow: auto;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .modal-content {
-    background-color: #f5f5f5;
+    background: linear-gradient(135deg, #2c3e50, #1a1a2e);
     margin: 5% auto;
-    width: 80%;
-    max-width: 800px;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    animation: modalFadeIn 0.3s;
-    color: #333;
+    padding: 0;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    transform: translateY(0);
+    transition: transform 0.3s ease-out;
 }
 
-@keyframes modalFadeIn {
-    from {opacity: 0; transform: translateY(-20px);}
-    to {opacity: 1; transform: translateY(0);}
+.modal-content:hover {
+    transform: translateY(-5px);
 }
 
 .modal-header {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
-    background: linear-gradient(135deg, #3a3a3a 0%, #202020 100%);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom: 2px solid #4a4a4a;
 }
 
 .modal-header h2 {
     margin: 0;
-    font-size: 2.2rem;
-    color: #ffffff;
+    color: #fff;
+    font-size: 1.8em;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.close-modal {
+.close {
+    color: #fff;
     font-size: 28px;
     font-weight: bold;
-    color: #aaaaaa;
     cursor: pointer;
-    transition: color 0.2s;
+    transition: color 0.3s ease;
+    opacity: 0.7;
 }
 
-.close-modal:hover {
-    color: #ffffff;
+.close:hover {
+    color: #ff6b6b;
+    opacity: 1;
 }
 
 .modal-body {
     padding: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
 }
 
-.leader-subheading {
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.subheading {
+    color: #a0a0a0;
+    margin-bottom: 20px;
+    font-size: 1.1em;
     text-align: center;
-    color: #666;
-    font-size: 1.6rem;
-    margin-bottom: 2rem;
 }
 
-/* Leaderboard table styles */
-.leaderboard-table-container {
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.leaderboard-table {
+table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 1.6rem;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-.leaderboard-table th,
-.leaderboard-table td {
-    padding: 1.5rem;
+th {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 15px;
     text-align: left;
-    border-bottom: 1px solid #eee;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 1px;
 }
 
-.leaderboard-table th {
-    background-color: #3a3a3a;
-    color: white;
-    font-weight: bold;
-    position: sticky;
-    top: 0;
+td {
+    padding: 15px;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease;
 }
 
-.rank-column {
-    width: 15%;
-    text-align: center;
-}
-
-.name-column {
-    width: 40%;
-}
-
-.date-column {
-    width: 25%;
-}
-
-.moves-column {
-    width: 20%;
-    text-align: center;
-}
-
-.leaderboard-table td:nth-child(1),
-.leaderboard-table td:nth-child(4) {
-    text-align: center;
+tr:hover td {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .rank-badge {
     display: inline-block;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
     text-align: center;
-    color: white;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
     font-weight: bold;
-    background-color: #777;
 }
 
-/* Special styling for top 3 */
 .rank-1 .rank-badge {
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-    box-shadow: 0 2px 5px rgba(255, 165, 0, 0.3);
-    font-size: 1.8rem;
-    width: 36px;
-    height: 36px;
-    line-height: 36px;
+    background: linear-gradient(135deg, #ffd700, #ffa500);
+    color: #000;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
 .rank-2 .rank-badge {
-    background: linear-gradient(135deg, #C0C0C0 0%, #A9A9A9 100%);
-    box-shadow: 0 2px 5px rgba(169, 169, 169, 0.3);
+    background: linear-gradient(135deg, #c0c0c0, #a0a0a0);
+    color: #000;
+    box-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
 }
 
 .rank-3 .rank-badge {
-    background: linear-gradient(135deg, #CD7F32 0%, #A0522D 100%);
-    box-shadow: 0 2px 5px rgba(160, 82, 45, 0.3);
+    background: linear-gradient(135deg, #cd7f32, #8b4513);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(205, 127, 50, 0.5);
 }
 
-.rank-1 td {
-    font-weight: bold;
-}
-
-.leaderboard-table tr:hover {
-    background-color: #f9f9f9;
-}
-
-.leaderboard-footer {
+.modal-footer {
+    padding: 20px;
     text-align: center;
-    margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-footer p {
+    color: #fff;
+    margin: 0;
+    font-size: 1.1em;
     font-style: italic;
-    color: #666;
-}
-
-/* Leaderboard icon styling */
-.leaderboard-icon {
-    display: inline-flex;
-    align-items: center;
-    font-size: 0.7em;
-    margin-left: 10px;
-    cursor: pointer;
-    vertical-align: middle;
-    color: #d4af37; /* Gold color for trophy feel */
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.leaderboard-icon:hover {
-    transform: scale(1.2);
-    color: #ffd700; /* Brighter gold on hover */
-}
-
-.leaderboard-icon .iconify {
-    font-size: 1.8em;
 }
 
 /* Responsive adjustments */
-@media screen and (max-width: 600px) {
+@media (max-width: 768px) {
     .modal-content {
         width: 95%;
         margin: 10% auto;
     }
     
-    .leaderboard-table {
-        font-size: 1.4rem;
+    th, td {
+        padding: 12px 8px;
+        font-size: 0.9em;
     }
-
-    .leaderboard-table th,
-    .leaderboard-table td {
-        padding: 1rem;
-    }
-
+    
     .modal-header h2 {
-        font-size: 1.8rem;
+        font-size: 1.5em;
     }
+}
 
+@media (max-width: 480px) {
+    .modal-content {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        height: 100%;
+    }
+    
+    .modal-body {
+        max-height: none;
+        height: calc(100vh - 160px);
+    }
+    
+    th, td {
+        padding: 10px 5px;
+        font-size: 0.8em;
+    }
+    
     .rank-badge {
-        width: 25px;
-        height: 25px;
-        line-height: 25px;
-    }
-
-    .rank-1 .rank-badge {
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
-        font-size: 1.6rem;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
     }
 }
