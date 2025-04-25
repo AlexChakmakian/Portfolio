@@ -58,7 +58,18 @@ module.exports = async function (context, req) {
 
         context.log("Creating TableClient with credentials");
         const credential = new AzureNamedKeyCredential(accountName, accountKey);
-        const client = new TableClient("https://chessleaderboard.table.core.windows.net", tableName, credential);
+        const client = new TableClient(`https://${accountName}.table.core.windows.net`, tableName, credential);
+
+        // Ensure table exists
+        try {
+            await client.createTable();
+            context.log("Table created successfully");
+        } catch (error) {
+            if (error.code !== "TableAlreadyExists") {
+                throw error;
+            }
+            context.log("Table already exists");
+        }
 
         const entity = {
             partitionKey: "Players",
@@ -86,8 +97,7 @@ module.exports = async function (context, req) {
             headers: headers,
             body: {
                 error: "Failed to save player data",
-                details: error.message,
-                stack: error.stack
+                details: error.message
             }
         };
     }
