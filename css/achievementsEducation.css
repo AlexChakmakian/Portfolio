@@ -117,12 +117,6 @@
     list-style-type: disc;
     margin-left: 2rem; /* Add margin to move text to the right */
   }
-  #pennymac-image {
-    width: clamp(20rem, 3vw, 25rem);
-    height: auto;
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
   #csun-exp-img {
     width: clamp(10rem, 3vw, 15rem);
     height: auto;

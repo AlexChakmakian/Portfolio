@@ -1,13 +1,12 @@
 particlesJS(
   "particles-js",
-
   {
     particles: {
       number: {
-        value: 80,
+        value: 60,
         density: {
           enable: true,
-          value_area: 800,
+          value_area: 1000,
         },
       },
       color: {
@@ -22,14 +21,9 @@ particlesJS(
         polygon: {
           nb_sides: 5,
         },
-        image: {
-          src: "img/github.svg",
-          width: 100,
-          height: 100,
-        },
       },
       opacity: {
-        value: 0.5,
+        value: 0.3,
         random: false,
         anim: {
           enable: false,
@@ -39,7 +33,7 @@ particlesJS(
         },
       },
       size: {
-        value: 5,
+        value: 3,
         random: true,
         anim: {
           enable: false,
@@ -52,12 +46,12 @@ particlesJS(
         enable: true,
         distance: 150,
         color: "#ffffff",
-        opacity: 0.4,
+        opacity: 0.2,
         width: 1,
       },
       move: {
         enable: true,
-        speed: 2,
+        speed: 1.5,
         direction: "none",
         random: false,
         straight: false,
@@ -97,7 +91,7 @@ particlesJS(
           speed: 3,
         },
         repulse: {
-          distance: 200,
+          distance: 100,
         },
         push: {
           particles_nb: 4,
@@ -118,3 +112,13 @@ particlesJS(
     },
   }
 );
+
+// Sticky Header
+const header = document.querySelector('.header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});

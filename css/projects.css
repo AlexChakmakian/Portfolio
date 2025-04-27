@@ -1,15 +1,190 @@
-/* MOBILE VIEW */
-.portfolioTitle {
-  font-family: 'Montserrat', 'Arial Black', sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.04em; /* Slightly less tight spacing than your name */
-  font-size: clamp(2.5rem, 4vw, 4rem); /* Increased from 2rem/3vw/3.5rem */
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-  text-align: center;
-  color: #000000;
+/* Projects Section */
+.Projects {
+  padding: 5rem 2rem;
+  background: var(--surface-primary);
 }
 
+.portfolioTitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(3rem, 4vw, 4.8rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 6rem;
+  color: var(--text-primary);
+}
+
+.portfolioTitle span {
+  background: linear-gradient(to right, var(--accent-color), var(--accent-hover));
+  -webkit-background-clip: text;
+  
+  -webkit-text-fill-color: transparent;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto 8rem;
+  padding: 3rem;
+  background: var(--surface-primary);
+  border-radius: 1.6rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.projectDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.projectDetails h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.toolsUsed {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+}
+
+.toolsUsed span {
+  background: var(--surface-secondary);
+  color: var(--text-secondary);
+  padding: 0.6rem 0.8rem;
+  border-radius: 2rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.projectDetails p {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.projectButtons {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.codeButton,
+.demoButton,
+.figmaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  border-radius: 0.8rem;
+  transition: var(--transition);
+  cursor: pointer;
+  border: none;
+}
+
+.codeButton {
+  background: var(--surface-secondary);
+  color: var(--text-primary);
+}
+
+.demoButton {
+  background: var(--accent-color);
+  color: white;
+}
+
+.figmaButton {
+  background: #1e293b;
+  color: white;
+}
+
+.codeButton:hover,
+.demoButton:hover,
+.figmaButton:hover {
+  transform: translateY(-2px);
+}
+
+.codeButton:hover {
+  background: var(--border-color);
+}
+
+.demoButton:hover {
+  background: var(--accent-hover);
+}
+
+.figmaButton:hover {
+  background: #0f172a;
+}
+
+.videoplayers {
+  width: 100%;
+  border-radius: 1.6rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media screen and (min-width: 1024px) {
+  .project {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+  
+  .project:nth-child(even) .projectDetails {
+    order: 2;
+  }
+  
+  .project:nth-child(even) .videoplayers {
+    order: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Projects {
+    padding: 6rem 1.5rem;
+  }
+  
+  .project {
+    padding: 2rem;
+  }
+  
+  .projectDetails h3 {
+    font-size: 2rem;
+  }
+  
+  .toolsUsed span {
+    font-size: 1.2rem;
+  }
+  
+  .projectDetails p {
+    font-size: 1.4rem;
+  }
+  
+  .projectButtons {
+    flex-direction: column;
+  }
+  
+  .codeButton,
+  .demoButton,
+  .figmaButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
 /* Add this to ensure consistency on mobile */
 @media screen and (max-width: 768px) {
   .portfolioTitle {
@@ -27,7 +202,7 @@
     font-weight: 800;
     font-size: 3.5rem;
     letter-spacing: -0.04em;
-    text-align: left;
+    text-align: center; /* Changed from left to center */
   }
 }
 
@@ -59,105 +234,12 @@
   }
 }
 
-.project {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 5rem;
-}
-
-.projectDetails {
-  padding: 2rem;
-}
-
-.Projects {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #0d1117;
-}
-
 .project_image {
   width: 100%;
   border-radius: 0.3rem;
   /* Add glow effect */
   border: 1px solid #80b1ff;
   box-shadow: 0 0 8px 2px rgba(128, 177, 255, 0.4);
-}
-
-.toolsUsed {
-  color: rgb(135, 135, 135);
-  margin: auto;
-  font-size: 1.60rem;
-}
-
-@media screen and (max-width: 768px) {
-  .toolsUsed {
-    font-size: 1.0rem;
-  }
-}
-
-.videoplayers {
-  display: inline;
-  margin: auto;
-  border-radius: 1.75rem;
-  /* Replace default border with glowing accent border */
-  border: 2px solid #80b1ff;
-  box-shadow: 0 0 8px 2px rgba(128, 177, 255, 0.45);
-  width: 80%;
-}
-
-.image_box {
-  margin: auto;
-  width: 60%;
-  /* Add glow effect */
-  border: 1px solid #80b1ff;
-  box-shadow: 0 0 8px 2px rgba(128, 177, 255, 0.4);
-  border-radius: 0.5rem;
-  overflow: hidden;
-}
-/* Hover glow effect */
-.codeButton,
-.demoButton,
-.figmaButton {
-  transition: all 0.3s ease;
-}
-
-.codeButton:hover,
-.figmaButton:hover {
-  box-shadow: 0 0 10px 3px rgba(128, 177, 255, 0.5);
-  transform: translateY(-2px);
-  border-color: var(--accent-color);
-}
-
-.demoButton:hover {
-  background-color: rgb(108, 181, 254);
-  border-color: rgb(1, 130, 228);
-  box-shadow: 0 0 10px 3px rgba(1, 130, 228, 0.5);
-  transform: translateY(-2px);
-}
-
-.codeButton {
-  margin-top: 2rem;
-  background-color: white;
-  color: var(--accent-color);
-}
-
-.figmaButton {
-  margin-top: 2rem;
-  background-color: white;
-  color: var(--accent-color);
-  margin-left: 1rem; /* Add some space between the buttons */
-}
-
-.demoButton,
-.codeButton:hover {
-  background-color: var(--accent-color);
-  color: white;
-}
-
-.demoButton:hover {
-  background-color: rgb(108, 181, 254);
-  border-color: rgb(1, 130, 228);
 }
 
 #mp3Image {
@@ -174,7 +256,7 @@
 
 @media screen and (min-width: 1025px) {
   .portfolioTitle {
-    text-align: left;
+    text-align: center;
   }
   .project {
     flex-direction: row;
