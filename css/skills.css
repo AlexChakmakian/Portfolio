@@ -20,8 +20,11 @@
   font-family: 'Montserrat', 'Arial Black', sans-serif;
   font-weight: 800;
   letter-spacing: -0.04em;
-  color: #222;
+  color: #000000;
   font-size: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.mySkillsHeading span {
   background: linear-gradient(90deg, #6366f1 0%, #80b1ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

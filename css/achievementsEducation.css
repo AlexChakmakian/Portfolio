@@ -13,6 +13,15 @@
   color: #000000;
 }
 
+.education h2 span, 
+.achievements h2 span {
+  background: linear-gradient(90deg, #6366f1 0%, #80b1ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
 .education {
   width: 90%;
   margin: auto;
