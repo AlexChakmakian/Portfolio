@@ -125,7 +125,7 @@ body {
 
 /* Contact Section */
 .contactMe {
-  padding: 8rem 2rem;
+  padding-top: 0 !important;
   background: transparent;
 }
 
@@ -413,13 +413,16 @@ a {
   color: white;
 }
 
-nav { 
-  position: sticky;
+nav {
+  position: fixed !important;
   top: 0;
-  z-index: 2;
-  padding: 1.0rem 0; /* Increase padding for better spacing */
-  background-color: #1f2124;
-  font-size: 1.5rem; /* Reduce font size */
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(31, 33, 36, 0.75) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 1.0rem 0;
 }
 
 ul {
