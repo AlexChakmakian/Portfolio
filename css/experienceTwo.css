@@ -1,37 +1,68 @@
 /* MOBILE VIEW */
 
 .experienceTwo {
-  padding-top: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   display: flex;
   flex-direction: column;
   text-align: center;
-
   margin-bottom: 2rem;
-  clip-path: polygon(100% 0%, 0% 3%, 0% 100%, 100% 97%);
-  background: linear-gradient(120deg, #f8fafc 60%, #e0e7ff 100%);
-  backdrop-filter: blur(4px);
-  border-radius: 1.5rem;
-  box-shadow: 0 4px 24px 0 rgba(99,102,241,0.08);
+  /* Enhanced gradient background with spotlight effect in the middle */
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  /* Add spotlight radial gradient in the center */
+  background-image: 
+    radial-gradient(circle at center, rgba(128, 177, 255, 0.15) 0%, transparent 50%),
+    linear-gradient(135deg, #0f172a 0%, #1e293b 100%),
+    radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 20px 20px;
+  border-radius: 0;
+  box-shadow: 0 4px 24px 0 rgba(99,102,241,0.15);
+  position: relative; /* For pseudo-elements */
+  overflow: hidden; /* For contained effects */
+}
+
+/* Add subtle glow effect to the experience section */
+.experienceTwo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 30%;
+  width: 40%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(128, 177, 255, 0.5), transparent);
+}
+
+.experienceTwo::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 30%;
+  width: 40%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(128, 177, 255, 0.5), transparent);
 }
 
 .experienceTwo .mySkillsHeading {
   margin-top: 2rem;
-  margin-bottom: 0; /* Ensure no bottom margin */
+  margin-bottom: 3rem; /* Increased margin to push content down */
   font-family: 'Montserrat', 'Arial Black', sans-serif;
   font-weight: 800;
   letter-spacing: -0.04em;
   font-size: clamp(2.5rem, 4vw, 4rem);
   color: #ffffff;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .experienceTwo .skillsIcons {
   display: flex;
-  justify-content: space-around;
+  justify-content: center; /* Center horizontally */
   align-items: center;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem 0 5rem 0; /* Reduced top padding from 5rem to 2rem */
+  padding: 3rem 0 5rem 0; /* Increased top padding */
 }
 
 .experienceTwo .skillsIcons li {
@@ -85,7 +116,14 @@
 /* LAPTOP VIEW */
 @media screen and (min-width: 1025px) {
   .experienceTwo {
-    clip-path: polygon(100% 0%, 0% 10%, 0% 100%, 100% 90%);
+    padding: 5rem 2rem; /* Increased padding for better vertical spacing */
+    /* Enhanced gradient with more depth and stronger spotlight for larger screens */
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 80%, #252f43 100%);
+    background-image: 
+      radial-gradient(circle at center, rgba(128, 177, 255, 0.2) 0%, rgba(128, 177, 255, 0.05) 30%, transparent 70%),
+      linear-gradient(135deg, #0f172a 0%, #1e293b 80%, #252f43 100%),
+      radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 20px 20px;
   }
   
   .experienceTwo .mySkillsHeading {
@@ -93,10 +131,12 @@
     font-weight: 800;
     font-size: 3.2rem;
     letter-spacing: -0.04em;
+    margin-bottom: 0rem; /* Increased spacing after heading */
+    padding-top: 0rem; /* Added padding to push content down further */
   }
   
   .experienceTwo .skillsIcons {
-    padding: 2rem 0 8rem 0; /* Reduced top padding from 8rem to 2rem */
+    padding: 2rem 0 5rem 0; /* Adjusted padding */
   }
   
   .experienceTwo .skillsIcons li {
@@ -114,8 +154,4 @@
     object-fit: contain; /* Preserve aspect ratio */
     margin: 0 auto 1rem auto;
   }
-}
-.experienceTwo {
-  background: #181a1b;
-
 }

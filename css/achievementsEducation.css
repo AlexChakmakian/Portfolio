@@ -2,7 +2,8 @@
 
 /* Add heading style to match other sections */
 .education h2, 
-.achievements h2 {
+.achievements h2,
+.experience-section h2 {
   font-family: 'Montserrat', 'Arial Black', sans-serif;
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -14,7 +15,8 @@
 }
 
 .education h2 span, 
-.achievements h2 span {
+.achievements h2 span,
+.experience-section h2 span {
   background: linear-gradient(90deg, #6366f1 0%, #80b1ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -22,7 +24,18 @@
   text-fill-color: transparent;
 }
 
-.education {
+/* Container for education and experience side by side layout */
+.education-experience-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+  background-color: #fff;
+  padding: 2rem 0;
+}
+
+.education, 
+.experience-section {
   width: 90%;
   margin: auto;
   text-align: center;
@@ -95,7 +108,8 @@
 /* Add specific font styling for mobile */
 @media screen and (max-width: 768px) {
   .education h2, 
-  .achievements h2 {
+  .achievements h2,
+  .experience-section h2 {
     font-family: 'Montserrat', 'Arial Black', sans-serif;
     font-weight: 800;
     letter-spacing: -0.04em;
@@ -120,7 +134,8 @@
 @media screen and (min-width: 1025px) {
   /* Update font styling for laptop view */
   .education h2, 
-  .achievements h2 {
+  .achievements h2,
+  .experience-section h2 {
     font-family: 'Montserrat', 'Arial Black', sans-serif;
     font-weight: 800;
     font-size: 3.2rem;
@@ -128,11 +143,33 @@
     text-align: center;
   }
   
+  /* Container for side-by-side layout */
+  .education-experience-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .experience-section {
+    flex: 1;
+    max-width: 48%;
+  }
+  
+  .education {
+    flex: 1;
+    max-width: 48%;
+    width: 100%;
+  }
+  
   #experienceCard {
     flex-direction: row;
-    width: 60%;
+    width: 100%;
     padding-right: 5rem;
   }
+  
   .educationCard {
     display: flex;
     align-items: center;
@@ -140,6 +177,7 @@
     box-shadow: 0px 0px 10px 1px #e3e3e3;
     padding: 3rem;
     margin: 3rem 0 5rem 0;
+    width: 100%;
   }
   
   .educationInfo {
@@ -149,29 +187,28 @@
     list-style-type: disc;
     margin-left: 2rem; /* Add margin to move text to the right */
   }
+  
   #csun-exp-img {
     width: clamp(10rem, 3vw, 15rem);
     height: auto;
     margin-left: 6rem;
     margin-right: 6rem;
   }
-  .educationInfo {
-    width: 100%;
-  }
-  .education {
-    width: 50%;
-  }
+  
   .educationInfo p {
     line-height: 1.25;
   }
+  
   .educationInfo li {
     font-size: 2rem;
     margin-bottom: 1rem;
   }
+  
   .schoolPic {
     width: 15rem;
     margin: auto;
   }
+  
   .arcspic {
     width: 200px; /* Adjust the width as needed */
     height: auto;
@@ -181,10 +218,15 @@
 
 /* LARGE DESKTOP VIEW */
 @media screen and (min-width: 1600px) {
+  .education-experience-container {
+    max-width: 1800px;
+  }
+
   .educationCard {
     display: flex;
     flex-direction: row;
   }
+  
   #gradCap,
   #compPhone,
   .schoolPic {
@@ -200,6 +242,6 @@
   }
 
   #experienceCard {
-    width: 60%;
+    width: 100%;
   }
 }

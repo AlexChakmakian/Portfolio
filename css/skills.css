@@ -133,3 +133,42 @@
     font-size: 3.2rem;
   }
 }
+
+.education-experience-container {
+  background: linear-gradient(120deg, #f8faff 60%, #e6eeff 100%);
+  border-radius: 2.5rem;
+  box-shadow: 0 8px 32px 0 rgba(128,177,255,0.10);
+  position: relative;
+  padding: 4rem 2rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  overflow: visible;
+}
+
+@media screen and (min-width: 1025px) {
+  .education-experience-container {
+    gap: 0;
+    padding: 5rem 0;
+  }
+  .education, .experience-section {
+    position: relative;
+    z-index: 1;
+  }
+  .education {
+    left: 0;
+  }
+  .experience-section {
+    left: -60px; /* Overlap to the left */
+    z-index: 2;
+  }
+  .educationCard {
+    box-shadow: 0 8px 32px 0 rgba(128,177,255,0.13);
+    border: 1.5px solid #e3eaff;
+    background: rgba(255,255,255,0.98);
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+  .educationCard:hover {
+    box-shadow: 0 16px 48px 0 rgba(128,177,255,0.18);
+    transform: translateY(-8px) scale(1.03);
+  }
+}
