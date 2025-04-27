@@ -90,6 +90,13 @@
     clip-path: polygon(100% 0%, 0% 10%, 0% 100%, 100% 90%);
   }
   
+  .skillsIcons {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, auto);
+    max-width: 1000px;
+    gap: 2rem;
+  }
+  
   /* Only add font properties in the media query without changing layout */
   .mySkillsHeading {
     font-family: 'Montserrat', 'Arial Black', sans-serif;

@@ -110,18 +110,26 @@ body {
 }
 
 .myDescription {
-  font-size: clamp(1.6rem, 2vw, 2.4rem);
-  line-height: 1.6;
-  max-width: 60rem;
-  margin: 0 auto;
+  display: block;
+  margin: 2rem auto 0 auto;
+  max-width: 38rem;
+  width: 90%;
+  background: rgba(34, 43, 84, 0.25); /* Changed from solid #222B54 to semi-transparent */
   color: #e0e7ff;
-  text-shadow: 0 1px 8px #6366f144;
-  background: rgba(24,26,27,0.2);
-  border-radius: 1rem;
+  line-height: 1.65 !important;
   padding: 1.5rem 2rem;
-  backdrop-filter: blur(1.5px);
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   text-align: center;
-  width: 100%;
+  font-family: 'Inter', 'Montserrat', Arial, sans-serif;
+  letter-spacing: -0.01em;
+  transition: box-shadow 0.2s;
+}
+.myDescription span {
+  color: var(--accent-color);
+  font-weight: 700;
 }
 
 /* Contact Section */
