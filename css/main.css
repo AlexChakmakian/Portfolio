@@ -147,14 +147,6 @@ body {
   color: #000000;
 }
 
-.contactMe h2 span {
-  background: linear-gradient(90deg, #6366f1 0%, #80b1ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-}
-
 .contactCards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -349,6 +341,29 @@ body {
   width: 80%;
   line-height: 2;
   font-size: clamp(0.5rem, 3vw, 2rem);
+}
+
+/* Improved mobile navigation - fixing LinkedIn and GitHub centering */
+@media screen and (max-width: 768px) {
+  nav ul {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  
+  nav li {
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .myLinks {
+    text-align: center;
+    font-size: 1.6rem;
+  }
 }
 
 .topArrow {
@@ -989,5 +1004,98 @@ nav:active {
   }
   .project:not(:last-child) {
     margin-bottom: 4rem;
+  }
+}
+
+/* Section Headings with Modern Underline */
+.portfolioTitle, 
+.mySkillsHeading, 
+.education h2, 
+.contactMe h2 {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 4rem;
+  padding-bottom: 1rem;
+}
+
+.portfolioTitle::after, 
+.mySkillsHeading::after, 
+.education h2::after, 
+.contactMe h2::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #6366f1 0%, #80b1ff 100%);
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(128, 177, 255, 0.5);
+}
+
+/* Make sure section titles are centered */
+.portfolioTitle, 
+.mySkillsHeading, 
+.education h2, 
+.contactMe h2 {
+  text-align: center;
+  width: 100%;
+}
+
+/* Section spacing consistency */
+.Projects,
+.experienceTwo,
+.education,
+.skillsSection,
+.contactMe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem 2rem;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .portfolioTitle::after, 
+  .mySkillsHeading::after, 
+  .education h2::after, 
+  .contactMe h2::after {
+    width: 50px;
+    height: 3px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .portfolioTitle::after, 
+  .mySkillsHeading::after, 
+  .education h2::after, 
+  .contactMe h2::after {
+    width: 80px;
+    height: 4px;
+  }
+}
+
+/* Make ARCS and CodePath logos consistent */
+.arcspic.centered-logo {
+  width: 10rem;
+  height: auto;
+  object-fit: contain;
+  margin: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .arcspic.centered-logo {
+    width: 8rem;
+    height: auto;
+    object-fit: contain;
+    margin: 1rem auto;
+    display: block;
+  }
+  
+  .educationCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }

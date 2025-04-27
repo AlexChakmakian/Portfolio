@@ -46,7 +46,7 @@
 }
 
 .projectDetails h3 {
-  font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
   font-size: 2.4rem;
   font-weight: 600;
   color: var(--text-primary);
@@ -82,52 +82,154 @@
   margin-top: 2rem;
 }
 
+/* Shared button base styles */
 .codeButton,
 .demoButton,
 .figmaButton {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.8rem;
   padding: 1rem 2rem;
   font-size: 1.4rem;
-  font-weight: 500;
+  font-weight: 600;
   border-radius: 0.8rem;
-  transition: var(--transition);
+  transition: all 0.3s ease;
   cursor: pointer;
   border: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
 
+/* Code Button - GitHub */
 .codeButton {
-  background: var(--surface-secondary);
-  color: var(--text-primary);
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  color: #334155;
+  border: 1px solid rgba(203, 213, 225, 0.4);
 }
 
-.demoButton {
-  background: var(--accent-color);
-  color: white;
-}
-
-.figmaButton {
-  background: #1e293b;
-  color: white;
-}
-
-.codeButton:hover,
-.demoButton:hover,
-.figmaButton:hover {
-  transform: translateY(-2px);
+.codeButton .iconify {
+  color: #333;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.2));
+  transition: all 0.3s ease;
 }
 
 .codeButton:hover {
-  background: var(--border-color);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);
+}
+
+.codeButton:hover .iconify {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.codeButton::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 20%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(30deg);
+  transition: all 0.6s ease;
+}
+
+.codeButton:hover::before {
+  left: 100%;
+}
+
+/* Demo Button - Live demos/play */
+.demoButton {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.demoButton .iconify {
+  color: white;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.5));
+  transition: all 0.3s ease;
 }
 
 .demoButton:hover {
-  background: var(--accent-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4);
+  background: linear-gradient(135deg, #6366f1 10%, #4338ca 100%);
+}
+
+.demoButton:hover .iconify {
+  transform: scale(1.15);
+}
+
+.demoButton::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 20%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(30deg);
+  transition: all 0.6s ease;
+}
+
+.demoButton:hover::before {
+  left: 100%;
+}
+
+/* Figma Button - Designs */
+.figmaButton {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+}
+
+.figmaButton .iconify {
+  color: #2ECCAA; /* Figma's teal accent color */
+  filter: drop-shadow(0 0 3px rgba(46, 204, 170, 0.3));
+  transition: all 0.3s ease;
 }
 
 .figmaButton:hover {
-  background: #0f172a;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(15, 23, 42, 0.35);
+}
+
+.figmaButton:hover .iconify {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 5px rgba(46, 204, 170, 0.5));
+}
+
+.figmaButton::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 20%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(30deg);
+  transition: all 0.6s ease;
+}
+
+.figmaButton:hover::after {
+  left: 100%;
+}
+
+/* Active state for all buttons */
+.codeButton:active,
+.demoButton:active,
+.figmaButton:active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .videoplayers {
@@ -163,8 +265,8 @@
   }
   
   .projectDetails h3 {
-    font-size: 2rem;
-  }
+        font-size: 2rem;
+      }
   
   .toolsUsed span {
     font-size: 1.2rem;

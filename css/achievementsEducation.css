@@ -7,7 +7,7 @@
   font-weight: 800;
   letter-spacing: -0.04em;
   font-size: clamp(2.5rem, 4vw, 4rem);
-  margin-top: 5rem;
+  margin-top: 2rem; /* Reduced from 5rem to 2rem */
   margin-bottom: 3rem;
   text-align: center;
   color: #000000;
@@ -27,6 +27,7 @@
   margin: auto;
   text-align: center;
   color: black;
+  padding-top: 1rem; /* Added a small top padding */
 }
 
 .educationCard {
@@ -99,6 +100,18 @@
     font-weight: 800;
     letter-spacing: -0.04em;
     font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-top: 1rem; /* Reduced further for mobile view */
+  }
+  
+  /* Added more consistent spacing between sections on mobile */
+  .education {
+    padding-top: 0;
+  }
+  
+  /* Make education cards more compact on mobile */
+  .educationCard {
+    margin: 2rem 0 3rem 0; /* Reduced margins */
+    padding: 2rem; /* Reduced padding */
   }
 }
 
