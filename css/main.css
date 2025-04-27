@@ -126,7 +126,7 @@ body {
 /* Contact Section */
 .contactMe {
   padding: 8rem 2rem;
-  background: var(--surface-secondary);
+  background: transparent;
 }
 
 .contactMe h2 {
@@ -922,4 +922,52 @@ nav:active {
 .myLinks:hover {
   color: var(--accent-color) !important;
   background: transparent !important;
+}
+
+/* Projects Section */
+.Projects {
+  padding: 5rem 2rem;
+  background: transparent;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  padding: 3rem;
+  background: var(--surface-primary);
+  border-radius: 1.6rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .Projects {
+    padding: 4rem 1.5rem;
+  }
+  
+  .project {
+    padding: 2rem;
+    margin-bottom: 3rem;
+    gap: 2rem;
+  }
+  
+  .project:not(:last-child) {
+    margin-bottom: 4rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .project {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    margin-bottom: 4rem;
+  }
+  .project:not(:last-child) {
+    margin-bottom: 4rem;
+  }
 }
