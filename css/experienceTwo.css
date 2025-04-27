@@ -62,11 +62,23 @@
 /* Add mobile-specific styles */
 @media screen and (max-width: 768px) {
   .experienceTwo .mySkillsHeading {
+    color: #fff !important;
     font-family: 'Montserrat', 'Arial Black', sans-serif;
     font-weight: 800;
     letter-spacing: -0.04em;
     font-size: clamp(2.5rem, 5vw, 3.5rem);
-    color: #222 !important;
+  }
+  .experienceTwo .skillsIcons {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 2rem 0 3rem 0;
+  }
+  .experienceTwo .skillsIcons li {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 120px;
+    margin: 0 auto;
   }
 }
 
