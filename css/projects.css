@@ -260,13 +260,27 @@
     padding: 6rem 1.5rem;
   }
   
+  .portfolioTitle {
+    font-family: 'Montserrat', 'Arial Black', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    font-size: clamp(2.5rem, 5vw, 3.5rem); /* Ensure good size on mobile */
+  }
+  
   .project {
     padding: 2rem;
   }
   
   .projectDetails h3 {
-        font-size: 2rem;
-      }
+    font-size: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+  }
+  
+  .toolsUsed {
+    justify-content: center; /* Center technologies/tools on mobile */
+  }
   
   .toolsUsed span {
     font-size: 1.2rem;
@@ -278,6 +292,7 @@
   
   .projectButtons {
     flex-direction: column;
+    align-items: center; /* Center buttons on mobile */
   }
   
   .codeButton,
@@ -285,15 +300,6 @@
   .figmaButton {
     width: 100%;
     justify-content: center;
-  }
-}
-/* Add this to ensure consistency on mobile */
-@media screen and (max-width: 768px) {
-  .portfolioTitle {
-    font-family: 'Montserrat', 'Arial Black', sans-serif;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    font-size: clamp(2.5rem, 5vw, 3.5rem); /* Ensure good size on mobile */
   }
 }
 
