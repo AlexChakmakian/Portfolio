@@ -22,7 +22,6 @@
     
     <!-- Preload critical assets -->
     <link rel="preload" href="videos/sp_footage.mov" as="video" type="video/mp4">
-    <link rel="preload" href="videos/chess_footage.mp4" as="video" type="video/mp4">
     <link rel="preload" href="css/main.css" as="style">
     <link rel="preload" href="./aos-master/dist/aos.js" as="script">
     
@@ -175,7 +174,7 @@
             </div>
           </div>
           <video class="videoplayers" autoplay loop muted playsinline aria-label="Chess Bot Demo Video">
-            <source src="videos/chess_footage.mp4" type="video/mp4" />
+            <source src="videos/chess_footag.mov" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </article>
@@ -492,14 +491,7 @@
     <script src="scripts/particles.js"></script>
     <script src="scripts/app.js"></script>
     <script>
-      // Properly handle videos collection
-      document.addEventListener('DOMContentLoaded', function() {
-        const videos = document.getElementsByClassName('videoplayers');
-        // Loop through each video element in the collection
-        for (let i = 0; i < videos.length; i++) {
-          videos[i].play();
-        }
-      });
+      document.getElementsByClassName('videoplayers').play();
     </script>
     
     <!-- Typed.js initialization -->
