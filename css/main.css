@@ -115,7 +115,7 @@ body {
   max-width: 38rem;
   width: 90%;
   background: rgba(34, 43, 84, 0.25); /* Changed from solid #222B54 to semi-transparent */
-  color: #e0e7ff;
+  color: #ffffff;
   line-height: 1.65 !important;
   padding: 1.5rem 2rem;
   border-radius: 1.2rem;
@@ -308,6 +308,26 @@ body {
 :root {
   --accent-color: #80b1ff;
   --back-color: #181a1b;
+}
+
+/* Typed.js cursor styling */
+.typed-cursor {
+  font-size: clamp(5vw, 6rem);
+  color: var(--accent-color);
+  opacity: 1;
+  animation: typedjsBlink 0.7s infinite;
+  -webkit-animation: typedjsBlink 0.7s infinite;
+  animation: typedjsBlink 0.7s infinite;
+}
+
+@keyframes typedjsBlink {
+  50% { opacity: 0.0; }
+}
+
+@-webkit-keyframes typedjsBlink {
+  0% { opacity: 1; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1; }
 }
 
 html {

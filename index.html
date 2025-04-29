@@ -25,6 +25,9 @@
     <link rel="preload" href="css/main.css" as="style">
     <link rel="preload" href="./aos-master/dist/aos.js" as="script">
     
+    <!-- Add Typed.js library -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
     <link rel="stylesheet" href="./aos-master/dist/aos.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -102,7 +105,7 @@
       </h1>
       <p class="myDescription" data-aos="fade-up">
         I'm a Computer Science Student at CSUN currently interning at <span id="job">LA Tech</span>.
-        See my personal projects below!
+        View my <span id="typed-description"></span>
       </p>
     </header>
 
@@ -489,6 +492,25 @@
     <script src="scripts/app.js"></script>
     <script>
       document.getElementsByClassName('videoplayers').play();
+    </script>
+    
+    <!-- Typed.js initialization -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var typedDescription = new Typed('#typed-description', {
+          strings: ["projects below!", "experience below!", "contacts below!"],
+          typeSpeed: 65,  // Reduced from 50 to 30 for slower typing
+          backSpeed: 40,  // Reduced from 30 to 20 for slower erasing
+          backDelay: 2750,
+          startDelay: 500,
+          loop: true,
+          showCursor: true,
+          cursorChar: '|',
+          autoInsertCss: true,
+          smartBackspace: false,
+          contentType: 'html'
+        });
+      });
     </script>
   </body>
 </html>
