@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex's Chess Bot</title>
     
+    <!-- Meta tags for SEO and social sharing -->
+    <meta name="description" content="Challenge Alex's custom-trained AI chess bot. Test your skills against a bot trained on Alex's own playing style.">
+    <meta property="og:title" content="Alex's Chess Bot Challenge">
+    <meta property="og:description" content="Play chess against an AI trained on Alex's gameplay style. Can you beat it?">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alexanderchakmakian.com/chess/">
+    
     <!-- Preload critical resources -->
     <link rel="preload" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css" as="style">
     <link rel="preload" href="../css/chess-styles.css" as="style">
@@ -15,6 +22,11 @@
     <link rel="preload" href="https://chessboardjs.com/img/chesspieces/wikipedia/wB.png" as="image">
     <link rel="preload" href="https://chessboardjs.com/img/chesspieces/wikipedia/wQ.png" as="image">
     <link rel="preload" href="https://chessboardjs.com/img/chesspieces/wikipedia/wK.png" as="image">
+    
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
     
     <!-- Actual CSS links -->
     <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
@@ -63,6 +75,7 @@
     <div class="status" id="status">Make your move</div>
 
     <div class="loading-indicator" id="loading"><img src="../images/alex_face.png" alt="Alex" id="alex-thinking-img">Alex is thinking...</div>
+    
     <div class="board-container">
         <div class="board-background">
             <div id="myBoard"></div>
@@ -91,7 +104,7 @@
       <p class="copyright">© 2025 Alexander Chakmakian</p>
     </footer>
 
-    <!-- Simplified leaderboard modal that will be populated by AJAX -->
+    <!-- Improved leaderboard modal that will be populated by AJAX -->
     <div id="leaderboardModal" class="modal">
         <div class="modal-content" id="leaderboardContent">
             <!-- Content will be loaded here -->
