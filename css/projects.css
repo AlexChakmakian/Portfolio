@@ -1,12 +1,12 @@
 /* Projects Section */
 .Projects {
-  padding: 5rem 2rem;
+  padding: 3rem 2rem 5rem;
   background: var(--surface-primary);
 }
 
 .portfolioTitle {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(3rem, 4vw, 4.8rem);
+  font-size: clamp(4rem, 4vw, 4.8rem);
   font-weight: 700;
   text-align: center;
   margin-bottom: 6rem;
@@ -257,7 +257,7 @@
 
 @media screen and (max-width: 768px) {
   .Projects {
-    padding: 6rem 1.5rem;
+    padding: 4rem 1.5rem;
   }
   
   .portfolioTitle {
@@ -314,7 +314,7 @@
   }
 }
 
-/* Add glow effect to project titles - text glow only, no box (reduced intensity) */
+/* Add glow effect to project titles - text glow only, no box*/
 .projectDetails h3 {
   position: relative;
   display: inline-block;
