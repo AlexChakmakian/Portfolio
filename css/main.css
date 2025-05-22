@@ -112,7 +112,7 @@ body {
 .myDescription {
   display: block;
   margin: 2rem auto 0 auto;
-  max-width: 38rem;
+  max-width: 42rem; /* Increased from 38rem to make it wider */
   width: 90%;
   background: rgba(34, 43, 84, 0.25); /* Changed from solid #222B54 to semi-transparent */
   color: #ffffff;
@@ -766,9 +766,8 @@ footer {
 @media screen and (min-width: 1025px) {
   body {
     font-size: 2.4rem;
-  }
-  .myDescription {
-    width: 40%;
+  }  .myDescription {
+    width: 45%; /* Increased from 40% to make it wider */
     margin: 0;
   }
   nav {
@@ -848,9 +847,8 @@ footer {
     font-size: 7rem;
   }
   
-  
-  .myDescription {
-    width: 35%;
+    .myDescription {
+    width: 40%; /* Increased from 35% to make it wider */
     font-size: 2.2rem;
   }
 }
