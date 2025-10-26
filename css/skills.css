@@ -1,12 +1,6 @@
-/* SKILLS SECTION - HORIZONTAL SCROLLING STRIP */
-
+/* SKILLS SECTION */
 .skillsSection {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  background: rgba(255, 255, 255, 0.10);
-  backdrop-filter: blur(8px);
-  border-radius: 2rem;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  padding: 4rem 0;
   margin: 4rem auto 2rem auto;
   max-width: 1400px;
   width: 98%;
@@ -34,15 +28,33 @@
   text-fill-color: transparent;
 }
 
-/* Skills Scroll Container */
 .skills-scroll-container {
   width: 100%;
   overflow: hidden;
   position: relative;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 1.5rem;
-  padding: 2rem 0;
-  box-shadow: inset 0 4px 16px 0 rgba(99, 102, 241, 0.1);
+  padding: 3rem 0;
+}
+
+/* Fade overlays */
+.skills-scroll-container::before,
+.skills-scroll-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.skills-scroll-container::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 30%, transparent 100%);
+}
+
+.skills-scroll-container::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 30%, transparent 100%);
 }
 
 .skills-scroll-strip {
@@ -57,69 +69,72 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
   padding: 2rem 1.5rem;
-  box-shadow: 0 4px 20px 0 rgba(99, 102, 241, 0.15);
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   min-width: 140px;
   flex-shrink: 0;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
 }
 
 .skill-item:hover {
   transform: translateY(-8px) scale(1.05);
-  box-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.25);
-  background: rgba(128, 177, 255, 0.2);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.3);
 }
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.skill-item:nth-child(odd) { animation: float 6s ease-in-out infinite; }
+.skill-item:nth-child(even) { animation: float 6s ease-in-out infinite reverse; }
 
 .iconifySkills {
   font-size: 3.5rem;
   color: #6366f1;
-  filter: drop-shadow(0 2px 8px #6366f133);
-  transition: all 0.3s ease;
+  filter: drop-shadow(0 4px 12px rgba(99, 102, 241, 0.3));
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   margin-bottom: 0.8rem;
 }
 
 .skill-item:hover .iconifySkills {
   color: #80b1ff;
-  filter: drop-shadow(0 4px 16px #80b1ff55);
+  filter: drop-shadow(0 8px 24px rgba(128, 177, 255, 0.4));
   transform: scale(1.1);
 }
 
 .iconText {
   font-size: 1.1rem;
-  color: #333;
+  color: #4a5568;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
   text-align: center;
 }
 
-/* Animation for continuous scrolling */
+/* Scrolling animation */
 @keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-/* Pause animation on hover */
 .skills-scroll-container:hover .skills-scroll-strip {
   animation-play-state: paused;
 }
 
 /* LAPTOP VIEW */
 @media screen and (min-width: 1025px) {
-  .skillsSection {
-    /* Removed clip-path to fix cut-off issue */
-  }
-  
-  .skills-scroll-container {
-    padding: 3rem 0;
+  .skills-scroll-container::before,
+  .skills-scroll-container::after {
+    width: 150px;
   }
   
   .skill-item {
@@ -144,17 +159,21 @@
 @media screen and (max-width: 768px) {
   .skillsSection {
     padding: 2rem 0;
-    border-radius: 1.2rem;
-    width: 98%;
   }
   
   .skills-scroll-container {
     padding: 2rem 0;
   }
   
+  .skills-scroll-container::before,
+  .skills-scroll-container::after {
+    width: 80px;
+  }
+  
   .skill-item {
     min-width: 120px;
     padding: 1.5rem 1rem;
+    border-radius: 16px;
   }
   
   .iconifySkills {
