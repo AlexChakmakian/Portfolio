@@ -81,6 +81,10 @@
   margin: 0 auto 1rem auto;
 }
 
+.experienceTwo .latech-logo {
+  width: 70px;
+}
+
 .experienceTwo .iconText {
   display: block;
   font-size: 1.5rem;
@@ -153,5 +157,9 @@
     height: 100px; /* Force consistent height */
     object-fit: contain; /* Preserve aspect ratio */
     margin: 0 auto 1rem auto;
+  }
+  
+  .experienceTwo .latech-logo {
+    height: 70px; /* Override height for consistent sizing on desktop */
   }
 }
